@@ -8,13 +8,13 @@ export default function HomePage() {
   );
 
   function testeAPI() {
-    const promise = axios.get("https://driven-gaming-store-fullstack.herokuapp.com/teste", null);
+    const promise = axios.get("https://driven-gaming-store-fullstack.herokuapp.com/teste");
 
-    promise.then(() => {
-      setTeste("Parabens, deu certo a conexão com o BackAPI");
+    promise.then((response) => {
+      setTeste(response.data);
     });
 
-    promise.then(() => {
+    promise.catch(() => {
       setTeste("Ih deu ruim rapaziada... Tente novamente.");
     });
   }
