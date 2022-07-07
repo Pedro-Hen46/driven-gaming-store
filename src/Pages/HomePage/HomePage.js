@@ -4,7 +4,6 @@ import styled from "styled-components";
 import Footer from  '../../components/Footer/Footer.js';
 import Carrossel from "../../components/Carrossel/Carrossel.js";
 import GameList from "../../components/GameList/GameList.js";
-import Header from "../../components/Header/Header.js";
 
 export default function HomePage() {
 
@@ -12,7 +11,6 @@ export default function HomePage() {
   
   return (
     <ContainerHome>
-      <Header />
       <Carrossel />
       <GameList />
       
