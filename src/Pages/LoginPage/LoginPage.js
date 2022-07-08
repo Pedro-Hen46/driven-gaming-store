@@ -26,14 +26,14 @@ export default function LoginPage() {
 
       const config = {
         headers: {
-          Authorization: `Bearer ${response.data.token}`,
+          Authorization: `Bearer ${res.data.token}`,
         },
       };
 
-      setToken({ ...response.data, config });
+      setToken({ ...res.data, config });
       setName(res.data.name)
 
-      localStorage.setItem("user", JSON.stringify({ ...response.data, config }));
+      localStorage.setItem("user", JSON.stringify({ ...res.data, config }));
       setLoading(false);
       navigate("/");
     }
