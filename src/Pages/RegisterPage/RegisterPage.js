@@ -1,22 +1,37 @@
 import styled from "styled-components";
-import Logo from "../../lib/images/testeLogoLogin.png";
 import { useNavigate } from "react-router-dom";
-export default function RegisterPage() {
-    const navigate = useNavigate();
+import { useState } from "react";
 
-    function goToLoginPage(){
-        navigate("/login");
-    }
-    
+//============= IMPORTANDO IMAGENS ============//
+import LogoRegister from "../../lib/images/mestreYodaHappy.png";
+import LogoFailed from "../../lib/images/mestreYodaSad.png";
+
+
+export default function RegisterPage() {
+  const navigate = useNavigate();
+
+  const [fail, setFail] = useState(false);
+
+
+  function createUser(){
+    setFail(!fail);
+  }
+
+  function goToLoginPage() {
+    navigate("/login");
+  }
+
   return (
     <ContainerRegister>
-      <img src={Logo} alt="Logo da empresa" />
+      <img src={ fail ? LogoFailed : LogoRegister} alt="Logo da empresa" />
       <input type="text" placeholder="Entre com seu nome"></input>
       <input type="email" placeholder="Entre com seu email"></input>
       <input type="password" placeholder="Entre com seu password senha"></input>
       <input type="password" placeholder="Confirme a sua senha"></input>
-      <button>CADASTRAR</button>
-      <span  onClick={() => goToLoginPage()}>Já tem uma conta? Faça o login agora!</span>
+      <button onClick={() => createUser()}>CADASTRAR</button>
+      <span onClick={() => goToLoginPage()}>
+        Já tem uma conta? Faça o login agora!
+      </span>
     </ContainerRegister>
   );
 }
@@ -30,8 +45,10 @@ const ContainerRegister = styled.div`
   justify-content: center;
   align-items: center;
   padding: 10px;
-  img{
-    height: 50%;
+  overflow-x: hidden;
+
+  img {
+    height: 40%;
     object-fit: cover;
   }
 
@@ -49,10 +66,15 @@ const ContainerRegister = styled.div`
     padding: 10px;
     font-size: 16px;
     font-family: "Montserrat";
+
+    :hover {
+      cursor: pointer;
+      box-shadow: 0px 0px 30px rgba(81, 223, 59, 0.9);
+    }
   }
   button {
-    background-color: #30deff;
-    border: thin solid #30deff;
+    background-color: #51df3b;
+    border: thin solid #51df3b;
     height: 50px;
     width: 80%;
     margin-bottom: 20px;
@@ -67,7 +89,7 @@ const ContainerRegister = styled.div`
 
     :hover {
       cursor: pointer;
-      box-shadow: 0px 0px 25px rgba(48, 222, 255, 0.9);
+      box-shadow: 0px 0px 30px rgba(81, 223, 59, 0.9);
     }
   }
   span {

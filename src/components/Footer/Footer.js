@@ -2,14 +2,16 @@ import { Navigate, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 export default function Footer() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
-  function goToHome(){
-    navigate('/')
-  }  function goToCart(){
-    navigate('/cart')
-  }  function goToAccount(){
-    navigate('/account')
+  function goToHome() {
+    navigate("/");
+  }
+  function goToCart() {
+    navigate("/cart");
+  }
+  function goToAccount() {
+    navigate("/account");
   }
 
   return (
@@ -31,6 +33,7 @@ export default function Footer() {
 }
 
 const MenuContainer = styled.div`
+  z-index: 1;
   @media (max-width: 700px) {
     width: 100%;
     height: 50px;
@@ -40,7 +43,7 @@ const MenuContainer = styled.div`
     position: fixed;
     bottom: 0;
     left: 0;
-    background-color: #000000;
+    background-color: rgba(0, 0, 0, 0.8);
 
     div {
       display: flex;

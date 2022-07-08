@@ -41,11 +41,13 @@ const GamesPromotion = styled.div`
   display: flex;
   overflow-y: hidden;
 
+  padding: 2%;
   margin-top: -15%;
   img {
     object-fit: cover;
     border-radius: 10px;
-    width: 220px;
+    width: 30%;
+    max-width: 250px;
     margin-left: 20px;
   }
 `;

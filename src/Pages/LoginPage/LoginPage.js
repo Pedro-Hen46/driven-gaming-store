@@ -1,16 +1,16 @@
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import Logo from "../../lib/images/testeLogoLogin.png";
+import Logo from "../../lib/images/Login-Driven.png";
 
 export default function LoginPage() {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
-function goToRegisterPage(){
+  function goToRegisterPage() {
     navigate("/register");
-}
-function goToHomePage(){
+  }
+  function goToHomePage() {
     navigate("/");
-}
+  }
 
   return (
     <ContainerLogin>
@@ -18,7 +18,9 @@ function goToHomePage(){
       <input type="email" placeholder="Entre com seu email"></input>
       <input type="password" placeholder="Entre com a sua senha"></input>
       <button onClick={() => goToHomePage()}>ENTRAR</button>
-      <span onClick={() => goToRegisterPage()}>Não tem conta? Cadastre-se agora!</span>
+      <span onClick={() => goToRegisterPage()}>
+        Não tem conta? Cadastre-se agora!
+      </span>
     </ContainerLogin>
   );
 }
@@ -32,9 +34,11 @@ const ContainerLogin = styled.div`
   justify-content: center;
   align-items: center;
   padding: 10px;
-  img{
-    width: 90%;
-    height: 40%;
+  overflow: hidden;
+
+  img {
+    width: 500px;
+    height: 320px;
     object-fit: contain;
     margin-bottom: 0px;
   }
@@ -53,6 +57,10 @@ const ContainerLogin = styled.div`
     padding: 10px;
     font-size: 16px;
     font-family: "Montserrat";
+    :hover {
+      cursor: pointer;
+      box-shadow: 0px 0px 25px rgba(48, 222, 255, 0.9);
+    }
   }
   button {
     background-color: #30deff;
