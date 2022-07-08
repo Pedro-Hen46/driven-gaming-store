@@ -11,7 +11,7 @@ export default function GameList() {
         <DetailsGame>
           <h4>Red Dead Redemption 2</h4>
           <tt>RPG - Mundo Aberto - Ação</tt>
-          
+
           <PlataformsIcons>
             <ion-icon name="desktop"></ion-icon>
             <ion-icon name="logo-xbox"></ion-icon>
@@ -38,7 +38,7 @@ export default function GameList() {
         <DetailsGame>
           <h4>Red Dead Redemption 2</h4>
           <tt>RPG - Mundo Aberto - Ação</tt>
-          
+
           <PlataformsIcons>
             <ion-icon name="desktop"></ion-icon>
             <ion-icon name="logo-xbox"></ion-icon>
@@ -65,7 +65,7 @@ export default function GameList() {
         <DetailsGame>
           <h4>Red Dead Redemption 2</h4>
           <tt>RPG - Mundo Aberto - Ação</tt>
-          
+
           <PlataformsIcons>
             <ion-icon name="desktop"></ion-icon>
             <ion-icon name="logo-xbox"></ion-icon>
@@ -92,7 +92,7 @@ export default function GameList() {
         <DetailsGame>
           <h4>Red Dead Redemption 2</h4>
           <tt>RPG - Mundo Aberto - Ação</tt>
-          
+
           <PlataformsIcons>
             <ion-icon name="desktop"></ion-icon>
             <ion-icon name="logo-xbox"></ion-icon>
@@ -119,7 +119,7 @@ export default function GameList() {
         <DetailsGame>
           <h4>Red Dead Redemption 2</h4>
           <tt>RPG - Mundo Aberto - Ação</tt>
-          
+
           <PlataformsIcons>
             <ion-icon name="desktop"></ion-icon>
             <ion-icon name="logo-xbox"></ion-icon>
@@ -138,7 +138,113 @@ export default function GameList() {
         </DetailsGame>
       </ContentDetails>
 
-      
+      <ContentDetails>
+        <img
+          src="https://loja.gameforfun.com.br/wp-content/uploads/2020/02/Red-Dead-Redemption-2-midia-digiital-xbox-one.jpg.webp"
+          alt="Capa do jogo"
+        />
+        <DetailsGame>
+          <h4>Red Dead Redemption 2</h4>
+          <tt>RPG - Mundo Aberto - Ação</tt>
+
+          <PlataformsIcons>
+            <ion-icon name="desktop"></ion-icon>
+            <ion-icon name="logo-xbox"></ion-icon>
+            <ion-icon name="logo-playstation"></ion-icon>
+          </PlataformsIcons>
+
+          <h6>
+            Na compra do Red Dead Redemption 2 você receberá um guia completo
+            com mais de 57 artigos em texto e vídeo para você completar 100% o
+            Red Dead 2.
+          </h6>
+          <PriceCart>
+            <h2>R$ 129,90</h2>
+            <ion-icon name="add-circle"></ion-icon>
+          </PriceCart>
+        </DetailsGame>
+      </ContentDetails>
+
+      <ContentDetails>
+        <img
+          src="https://loja.gameforfun.com.br/wp-content/uploads/2020/02/Red-Dead-Redemption-2-midia-digiital-xbox-one.jpg.webp"
+          alt="Capa do jogo"
+        />
+        <DetailsGame>
+          <h4>Red Dead Redemption 2</h4>
+          <tt>RPG - Mundo Aberto - Ação</tt>
+
+          <PlataformsIcons>
+            <ion-icon name="desktop"></ion-icon>
+            <ion-icon name="logo-xbox"></ion-icon>
+            <ion-icon name="logo-playstation"></ion-icon>
+          </PlataformsIcons>
+
+          <h6>
+            Na compra do Red Dead Redemption 2 você receberá um guia completo
+            com mais de 57 artigos em texto e vídeo para você completar 100% o
+            Red Dead 2.
+          </h6>
+          <PriceCart>
+            <h2>R$ 129,90</h2>
+            <ion-icon name="add-circle"></ion-icon>
+          </PriceCart>
+        </DetailsGame>
+      </ContentDetails>
+
+      <ContentDetails>
+        <img
+          src="https://loja.gameforfun.com.br/wp-content/uploads/2020/02/Red-Dead-Redemption-2-midia-digiital-xbox-one.jpg.webp"
+          alt="Capa do jogo"
+        />
+        <DetailsGame>
+          <h4>Red Dead Redemption 2</h4>
+          <tt>RPG - Mundo Aberto - Ação</tt>
+
+          <PlataformsIcons>
+            <ion-icon name="desktop"></ion-icon>
+            <ion-icon name="logo-xbox"></ion-icon>
+            <ion-icon name="logo-playstation"></ion-icon>
+          </PlataformsIcons>
+
+          <h6>
+            Na compra do Red Dead Redemption 2 você receberá um guia completo
+            com mais de 57 artigos em texto e vídeo para você completar 100% o
+            Red Dead 2.
+          </h6>
+          <PriceCart>
+            <h2>R$ 129,90</h2>
+            <ion-icon name="add-circle"></ion-icon>
+          </PriceCart>
+        </DetailsGame>
+      </ContentDetails>
+
+      <ContentDetails>
+        <img
+          src="https://loja.gameforfun.com.br/wp-content/uploads/2020/02/Red-Dead-Redemption-2-midia-digiital-xbox-one.jpg.webp"
+          alt="Capa do jogo"
+        />
+        <DetailsGame>
+          <h4>Red Dead Redemption 2</h4>
+          <tt>RPG - Mundo Aberto - Ação</tt>
+
+          <PlataformsIcons>
+            <ion-icon name="desktop"></ion-icon>
+            <ion-icon name="logo-xbox"></ion-icon>
+            <ion-icon name="logo-playstation"></ion-icon>
+          </PlataformsIcons>
+
+          <h6>
+            Na compra do Red Dead Redemption 2 você receberá um guia completo
+            com mais de 57 artigos em texto e vídeo para você completar 100% o
+            Red Dead 2.
+          </h6>
+          <PriceCart>
+            <h2>R$ 129,90</h2>
+            <ion-icon name="add-circle"></ion-icon>
+          </PriceCart>
+        </DetailsGame>
+      </ContentDetails>
     </ContainerGameList>
   );
 }
@@ -151,21 +257,21 @@ const PriceCart = styled.div`
   display: flex;
   align-items: center;
   position: absolute;
-  right: 1%;
+  right: 0%;
   top: 42%;
   h2 {
     color: #30deff;
-    font-size: 2.2rem;
+    font-size: 130%;
     font-weight: 700;
     font-family: "Montserrat";
     margin-right: 5px;
   }
-  ion-icon{
+  ion-icon {
     margin-top: 0px !important;
     font-size: 38px !important;
     color: #30deff !important;
     transition: all 0.4s !important;
-    :hover{
+    :hover {
       cursor: pointer !important;
       filter: brightness(99) !important;
     }
@@ -186,7 +292,7 @@ const DetailsGame = styled.legend`
     font-size: 0.8rem;
     color: #ffffff;
   }
-  
+
   h4 {
     color: #ffffff;
     font-size: 1.2rem;
@@ -197,20 +303,12 @@ const DetailsGame = styled.legend`
     margin-top: 10px;
     font-family: "Montserrat";
     font-weight: 400;
-    font-size: 0.5rem;
+    font-size: 0.4rem;
     color: #ffffff;
   }
 `;
 const ContentDetails = styled.div`
-  ion-icon {
-    color: #ffffff;
-    font-size: 20px;
-    margin-top: 10px;
-    margin-right: 20px;
-  }
-  div {
-  }
-
+  max-width: 425px;
   display: flex;
   position: relative;
 
@@ -228,12 +326,21 @@ const ContentDetails = styled.div`
     cursor: pointer;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.9);
   }
+
+  ion-icon {
+    color: #ffffff;
+    font-size: 20px;
+    margin-top: 10px;
+    margin-right: 20px;
+  }
+
 `;
 
 const ContainerGameList = styled.div`
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  flex-direction: inline;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
   align-items: center;
   width: 100%;
   margin-bottom: 50px;
