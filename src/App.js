@@ -6,19 +6,25 @@ import CartPage from "./Pages/CartPage/CartPage.js";
 import HomePage from "./Pages/HomePage/HomePage.js";
 import LoginPage from "./Pages/LoginPage/LoginPage.js";
 import RegisterPage from "./Pages/RegisterPage/RegisterPage.js";
+import UserContext from "./Context/userContext";
+import { useState } from "react";
 
 
 export default function App() {
-    return (
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/cart" element={<CartPage />} />
-            <Route path="/account" element={<Account />} />
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/register" element={<RegisterPage />} />
+  const [token, setToken] = useState('');
+  const [name, setName] = useState('');
+  return (
+    <BrowserRouter>
+      <UserContext.Provider value={{ token, setToken, name, setName }}>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/cart" element={<CartPage />} />
+          <Route path="/account" element={<Account />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage />} />
 
-          </Routes>
-        </BrowserRouter>
-    );
-  }
+        </Routes>
+      </UserContext.Provider>
+    </BrowserRouter>
+  );
+}

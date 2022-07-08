@@ -1,23 +1,57 @@
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import Logo from "../../lib/images/testeLogoLogin.png";
+import { useState, useContext } from "react";
+import axios from 'axios';
+import UserContext from '../../Context/userContext';
 
 export default function LoginPage() {
-    const navigate = useNavigate();
+  const { setToken, setName } = useContext(UserContext);
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
 
-function goToRegisterPage(){
+  function login(event) {
+    event.preventDefault();
+    const body = {
+      email,
+      password
+    };
+    setLoading(true);
+
+    const promise = axios.post("https://driven-gaming-store-fullstack.herokuapp.com/login",
+      body);
+    promise.then((res) => {
+      setToken({
+        headers: {
+          Authorization: `Bearer ${res.data.token}`
+        }
+      });
+      setName(res.data.name)
+      setLoading(false);
+      navigate("/");
+    }
+    )
+
+    promise.catch(() => {
+      setLoading(false);
+      alert("falha de login");
+    }
+    );
+  }
+
+  function goToRegisterPage() {
     navigate("/register");
-}
-function goToHomePage(){
-    navigate("/");
-}
+  }
 
   return (
     <ContainerLogin>
       <img src={Logo} alt="Logo da empresa" />
-      <input type="email" placeholder="Entre com seu email"></input>
-      <input type="password" placeholder="Entre com a sua senha"></input>
-      <button onClick={() => goToHomePage()}>ENTRAR</button>
+
+      <input disabled={loading ? true : false} type="email" placeholder="e-mail" onChange={e => setEmail(e.target.value)}></input>
+      <input disabled={loading ? true : false} type="password" placeholder="senha" onChange={e => setPassword(e.target.value)}></input>
+      <button onClick={login}>{loading ? "" : "Entrar"}</button>
       <span onClick={() => goToRegisterPage()}>Não tem conta? Cadastre-se agora!</span>
     </ContainerLogin>
   );

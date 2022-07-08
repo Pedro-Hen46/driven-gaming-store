@@ -1,22 +1,62 @@
 import styled from "styled-components";
 import Logo from "../../lib/images/testeLogoLogin.png";
 import { useNavigate } from "react-router-dom";
-export default function RegisterPage() {
-    const navigate = useNavigate();
+import { useState } from "react";
+import axios from "axios";
 
-    function goToLoginPage(){
-        navigate("/login");
+export default function RegisterPage() {
+  const navigate = useNavigate();
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
+  const [confirmPassword, setConfirmPassword] = useState();
+  const [name, setName] = useState();
+  const [loading, setLoading] = useState(false);
+  
+  function registerAcount(event) {
+    const body = {
+      email,
+      password,
+      name,
+    };
+
+    if (password === confirmPassword) {
+
+      setLoading(true);
+      event.preventDefault();
+      console.log(body)
+      const promise = axios.post("https://driven-gaming-store-fullstack.herokuapp.com/sign-up"
+        , body);
+      promise.then((res) => {
+        console.log(res)
+        setLoading(false);
+        navigate("/");
+      }
+      );
+      promise.catch(() => {
+        setLoading(false);
+        alert("falha de registro");
+      }
+      );
+    } else {
+      alert("Senhas nao coincide")
     }
-    
+  }
+
+  function goToLoginPage() {
+    navigate("/login");
+  }
+
   return (
     <ContainerRegister>
       <img src={Logo} alt="Logo da empresa" />
-      <input type="text" placeholder="Entre com seu nome"></input>
-      <input type="email" placeholder="Entre com seu email"></input>
-      <input type="password" placeholder="Entre com seu password senha"></input>
-      <input type="password" placeholder="Confirme a sua senha"></input>
-      <button>CADASTRAR</button>
-      <span  onClick={() => goToLoginPage()}>Já tem uma conta? Faça o login agora!</span>
+      <form onSubmit={registerAcount} >
+        <input disabled={loading ? true : false} type="text" placeholder="Nome" onChange={e => setName(e.target.value)}></input>
+        <input disabled={loading ? true : false} type="email" placeholder="E-mail" onChange={e => setEmail(e.target.value)}></input>
+        <input disabled={loading ? true : false} type="password" placeholder="Senha" onChange={e => setPassword(e.target.value)}></input>
+        <input disabled={loading ? true : false} type="password" placeholder="Confirme a senha" onChange={e => setConfirmPassword(e.target.value)}></input>
+        <button type="submit">{loading ? "" : "Cadastrar"}</button>
+      </form>
+      <span onClick={() => goToLoginPage()}>Já tem uma conta? Faça o login agora!</span>
     </ContainerRegister>
   );
 }
