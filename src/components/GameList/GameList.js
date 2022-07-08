@@ -1,9 +1,17 @@
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 export default function GameList() {
+ const navigate = useNavigate();
+
+ function goToProductDetails(){
+  navigate("/product");
+ }
+
+
   return (
     <ContainerGameList>
-      <ContentDetails>
+      <ContentDetails onClick={() => goToProductDetails()}>
         <img
           src="https://loja.gameforfun.com.br/wp-content/uploads/2020/02/Red-Dead-Redemption-2-midia-digiital-xbox-one.jpg.webp"
           alt="Capa do jogo"
@@ -30,7 +38,7 @@ export default function GameList() {
         </DetailsGame>
       </ContentDetails>
 
-      <ContentDetails>
+      <ContentDetails onClick={() => goToProductDetails()}>
         <img
           src="https://loja.gameforfun.com.br/wp-content/uploads/2020/02/Red-Dead-Redemption-2-midia-digiital-xbox-one.jpg.webp"
           alt="Capa do jogo"
@@ -57,7 +65,7 @@ export default function GameList() {
         </DetailsGame>
       </ContentDetails>
 
-      <ContentDetails>
+      <ContentDetails onClick={() => goToProductDetails()}>
         <img
           src="https://loja.gameforfun.com.br/wp-content/uploads/2020/02/Red-Dead-Redemption-2-midia-digiital-xbox-one.jpg.webp"
           alt="Capa do jogo"
@@ -84,7 +92,7 @@ export default function GameList() {
         </DetailsGame>
       </ContentDetails>
 
-      <ContentDetails>
+      <ContentDetails onClick={() => goToProductDetails()}>
         <img
           src="https://loja.gameforfun.com.br/wp-content/uploads/2020/02/Red-Dead-Redemption-2-midia-digiital-xbox-one.jpg.webp"
           alt="Capa do jogo"
@@ -111,7 +119,7 @@ export default function GameList() {
         </DetailsGame>
       </ContentDetails>
 
-      <ContentDetails>
+      <ContentDetails onClick={() => goToProductDetails()}>
         <img
           src="https://loja.gameforfun.com.br/wp-content/uploads/2020/02/Red-Dead-Redemption-2-midia-digiital-xbox-one.jpg.webp"
           alt="Capa do jogo"
@@ -138,7 +146,7 @@ export default function GameList() {
         </DetailsGame>
       </ContentDetails>
 
-      <ContentDetails>
+      <ContentDetails onClick={() => goToProductDetails()}>
         <img
           src="https://loja.gameforfun.com.br/wp-content/uploads/2020/02/Red-Dead-Redemption-2-midia-digiital-xbox-one.jpg.webp"
           alt="Capa do jogo"
@@ -165,7 +173,7 @@ export default function GameList() {
         </DetailsGame>
       </ContentDetails>
 
-      <ContentDetails>
+      <ContentDetails onClick={() => goToProductDetails()}>
         <img
           src="https://loja.gameforfun.com.br/wp-content/uploads/2020/02/Red-Dead-Redemption-2-midia-digiital-xbox-one.jpg.webp"
           alt="Capa do jogo"
@@ -192,7 +200,7 @@ export default function GameList() {
         </DetailsGame>
       </ContentDetails>
 
-      <ContentDetails>
+      <ContentDetails onClick={() => goToProductDetails()}>
         <img
           src="https://loja.gameforfun.com.br/wp-content/uploads/2020/02/Red-Dead-Redemption-2-midia-digiital-xbox-one.jpg.webp"
           alt="Capa do jogo"
@@ -219,7 +227,7 @@ export default function GameList() {
         </DetailsGame>
       </ContentDetails>
 
-      <ContentDetails>
+      <ContentDetails onClick={() => goToProductDetails()}>
         <img
           src="https://loja.gameforfun.com.br/wp-content/uploads/2020/02/Red-Dead-Redemption-2-midia-digiital-xbox-one.jpg.webp"
           alt="Capa do jogo"
@@ -245,6 +253,8 @@ export default function GameList() {
           </PriceCart>
         </DetailsGame>
       </ContentDetails>
+
+
     </ContainerGameList>
   );
 }
