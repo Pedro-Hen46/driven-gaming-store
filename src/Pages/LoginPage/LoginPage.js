@@ -23,12 +23,17 @@ export default function LoginPage() {
     const promise = axios.post("https://driven-gaming-store-fullstack.herokuapp.com/login",
       body);
     promise.then((res) => {
-      setToken({
+
+      const config = {
         headers: {
-          Authorization: `Bearer ${res.data.token}`
-        }
-      });
+          Authorization: `Bearer ${response.data.token}`,
+        },
+      };
+
+      setToken({ ...response.data, config });
       setName(res.data.name)
+
+      localStorage.setItem("user", JSON.stringify({ ...response.data, config }));
       setLoading(false);
       navigate("/");
     }
