@@ -44,19 +44,24 @@ const ContainerGameList = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-
-`
+  padding-left: 20px;
+`;
 const ContainerHome = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
   @media (max-width: 700px) {
     width: 100%;
     height: auto;
     display: flex;
     flex-direction: column;
-    align-items: center;
-
+    justify-content: center;
     align-items: center;
     background-color: #fff;
-
+    
     :last-child {
       margin-bottom: 50px;
     }

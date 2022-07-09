@@ -110,9 +110,10 @@ const ContentDetails = styled.div`
 
   background-color: #04015b;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  transition: all 0.2s linear;
   :hover {
     cursor: pointer;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.9);
+    box-shadow: 0px 0px 20px rgba(48, 222, 255, 0.9);
   }
 
   ion-icon {
@@ -124,6 +125,10 @@ const ContentDetails = styled.div`
 `;
 
 const ContainerGameList = styled.div`
+display: flex;
+justify-content: center !important;
+align-items: center !important;
+
   img {
     object-fit: cover;
     width: 130px;

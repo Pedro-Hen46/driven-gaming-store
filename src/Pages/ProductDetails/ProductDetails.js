@@ -27,7 +27,7 @@ export default function ProductDetails() {
     });
   }, [idProductSelected]);
 
-
+  console.log(gameDetails);
   return (
     <ContainerProduct>
       {gameDetails.length === 0 ? (
@@ -43,10 +43,9 @@ export default function ProductDetails() {
               ></path>
             </svg>
 
-            { gameDetails.images.map((item, index) => {
-              return  <img key={index} src={item} alt={gameDetails.titulo} />
+            {gameDetails.images.map((item, index) => {
+              return <img key={index} src={item} alt={gameDetails.titulo} />;
             })}
-
           </DemonstrationImages>
 
           <ProductInfo>
@@ -61,7 +60,18 @@ export default function ProductDetails() {
               />
             </div>
             <tt>{gameDetails.descricao}</tt>
-            {gameDetails.desconto}
+
+            <GameCompatibility>
+              {gameDetails.console.map((item, index) => (
+                <ion-icon name={item} key={index}></ion-icon>
+              ))}
+            </GameCompatibility>
+
+            <GamePrice>
+              <ion-icon name="cart"></ion-icon>
+              <h2>{gameDetails.desconto}</h2>
+            </GamePrice>
+
             <button>COMPRAR</button>
           </ProductInfo>
         </>
@@ -70,6 +80,40 @@ export default function ProductDetails() {
     </ContainerProduct>
   );
 }
+const GamePrice = styled.div`
+  display: flex;
+  width: 100%;
+  height: 40px;
+  justify-content: center;
+  align-items: center;
+  h2 {
+    font-family: "Montserrat";
+    font-weight: 700;
+    font-size: 48px;
+    color: #30deff;
+    text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+  }
+  ion-icon {
+    font-size: 60px;
+    color: #30deff;
+    margin-right: 20px;
+  }
+`;
+
+const GameCompatibility = styled.div`
+  display: flex;
+  width: 100%;
+  height: 50px;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+
+  ion-icon {
+    font-size: 32px;
+  }
+`;
+
 const DemonstrationImages = styled.div`
   width: 100%;
   height: 300px;
@@ -99,13 +143,14 @@ const DemonstrationImages = styled.div`
 
 const ProductInfo = styled.div`
   z-index: 1;
-  width: 95%;
+  width: 90%;
   height: auto;
   background-color: #ffffff;
   border-radius: 10px;
   padding: 20px;
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.4);
   margin-top: 10px;
+  margin-bottom: 45px;
 
   display: flex;
   flex-direction: column;
