@@ -4,7 +4,7 @@ import { useState } from "react";
 import axios from "axios";
 
 import Logo from "../../lib/images/mestreYodaHappy.png";
-
+import LogoFail from "../../lib/images/mestreYodaSad.png";
 
 export default function RegisterPage() {
   const navigate = useNavigate();
@@ -13,8 +13,10 @@ export default function RegisterPage() {
   const [confirmPassword, setConfirmPassword] = useState();
   const [name, setName] = useState();
   const [loading, setLoading] = useState(false);
-  
+  const [yoda, setYoda] = useState(true);
+
   function registerAcount(event) {
+    event.preventDefault();
     const body = {
       email,
       password,
@@ -22,25 +24,26 @@ export default function RegisterPage() {
     };
 
     if (password === confirmPassword) {
-
-      event.preventDefault();
       setLoading(true);
-      console.log(body)
-      const promise = axios.post("https://driven-gaming-store-fullstack.herokuapp.com/sign-up"
-        , body);
+
+      const promise = axios.post(
+        "https://driven-gaming-store-fullstack.herokuapp.com/sign-up",
+        body
+      );
       promise.then((res) => {
-        console.log(res)
+        console.log(res);
         setLoading(false);
         navigate("/");
-      }
-      );
-      promise.catch(() => {
+      });
+      promise.catch((error) => {
+        setYoda(false);
+        console.log(error);
         setLoading(false);
         alert("falha de registro");
-      }
-      );
+      });
     } else {
-      alert("As senhas não coincidem")
+      setYoda(false);
+      alert("As senhas não coincidem");
     }
   }
 
@@ -49,16 +52,50 @@ export default function RegisterPage() {
   }
 
   return (
-    <ContainerRegister>
-      <img src={Logo} alt="Logo Yoda" />
-      <form onSubmit={registerAcount} >
-        <input disabled={loading ? true : false} type="text" placeholder="Nome" onChange={e => setName(e.target.value)}></input>
-        <input disabled={loading ? true : false} type="email" placeholder="E-mail" onChange={e => setEmail(e.target.value)}></input>
-        <input disabled={loading ? true : false} type="password" placeholder="Senha" onChange={e => setPassword(e.target.value)}></input>
-        <input disabled={loading ? true : false} type="password" placeholder="Confirme a senha" onChange={e => setConfirmPassword(e.target.value)}></input>
+    <ContainerRegister yoda={yoda}>
+      <img src={yoda ? Logo : LogoFail} alt="Logo Yoda" />
+      <form onSubmit={registerAcount}>
+        <input
+          disabled={loading ? true : false}
+          type="text"
+          placeholder="Nome"
+          onChange={(e) => {
+            setName(e.target.value);
+            setYoda(true);
+          }}
+        ></input>
+        <input
+          disabled={loading ? true : false}
+          type="email"
+          placeholder="E-mail"
+          onChange={(e) => {
+            setEmail(e.target.value);
+            setYoda(true);
+          }}
+        ></input>
+        <input
+          disabled={loading ? true : false}
+          type="password"
+          placeholder="Senha"
+          onChange={(e) => {
+            setPassword(e.target.value);
+            setYoda(true);
+          }}
+        ></input>
+        <input
+          disabled={loading ? true : false}
+          type="password"
+          placeholder="Confirme a senha"
+          onChange={(e) => {
+            setConfirmPassword(e.target.value);
+            setYoda(true);
+          }}
+        ></input>
         <button type="submit">{loading ? "" : "CADASTRAR"}</button>
       </form>
-      <span onClick={() => goToLoginPage()}>Já tem uma conta? Faça o login agora!</span>
+      <span onClick={() => goToLoginPage()}>
+        Já tem uma conta? Faça o login agora!
+      </span>
     </ContainerRegister>
   );
 }
@@ -69,11 +106,18 @@ const ContainerRegister = styled.div`
   background-color: #000000;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   padding: 10px;
   overflow-x: hidden;
 
+  form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
   img {
     height: 40%;
     object-fit: cover;
@@ -88,7 +132,7 @@ const ContainerRegister = styled.div`
   input {
     height: 50px;
     width: 80%;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     border-radius: 5px;
     padding: 10px;
     font-size: 16px;
@@ -97,12 +141,12 @@ const ContainerRegister = styled.div`
 
     :hover {
       cursor: pointer;
-      box-shadow: 0px 0px 30px rgba(81, 223, 59, 0.9);
+      box-shadow: 0px 0px 30px ${(props) => (props.yoda ? "rgba(81, 223, 59, 0.9)" : "rgba(255,0,0,0.9)")};
     }
   }
   button {
-    background-color: #51df3b;
-    border: thin solid #51df3b;
+    background-color: ${(props) => (props.yoda ? "#51df3b" : "#ff0000")};
+    border: thin solid ${(props) => (props.yoda ? "#51df3b" : "#ff0000")};
     height: 50px;
     width: 80%;
     margin-bottom: 20px;
@@ -117,7 +161,7 @@ const ContainerRegister = styled.div`
 
     :hover {
       cursor: pointer;
-      box-shadow: 0px 0px 30px rgba(81, 223, 59, 0.9);
+      box-shadow: 0px 0px 30px ${(props) => (props.yoda ? "rgba(81, 223, 59, 0.9)" : "rgba(255,0,0,0.9)")};
     }
   }
   span {

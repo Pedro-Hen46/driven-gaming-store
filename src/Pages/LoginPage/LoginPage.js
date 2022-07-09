@@ -29,10 +29,13 @@ export default function LoginPage() {
         headers: {
           Authorization: `Bearer ${res.data.token}`,
         },
+        userControl: {
+          isLogged: true
+        }
       };
 
       setToken({ ...res.data, config });
-      setName(res.data.name)
+      setName(res.data)
 
       localStorage.setItem("user", JSON.stringify({ ...res.data, config }));
       setLoading(false);
@@ -90,7 +93,7 @@ const ContainerLogin = styled.div`
   input {
     height: 50px;
     width: 80%;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     border-radius: 5px;
     padding: 10px;
     font-size: 16px;

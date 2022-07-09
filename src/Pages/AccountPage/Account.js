@@ -1,24 +1,35 @@
 import Footer from "../../components/Footer/Footer";
 import UserProfileImage from "../../lib/images/Profile-user.png";
-
+import UserNotLogged from "../../components/UserNotLogged/UserNotLogged.js";
 
 import styled from "styled-components";
+import { useEffect, useState } from "react";
 
 export default function AccountPage() {
+  const [userData, setUserData] = useState(null);
 
+  useEffect(() => {
+    setUserData(JSON.parse(localStorage.getItem('user'))); //Pegando os dados do local storage.
+  }, []);
 
   //=============== INICIO DO RENDER =================//
   return (
-    <ContainerAccount>
-      <img src={UserProfileImage} alt="Logo do usuario" />
+    <>
+      {userData === null ? (
+        <UserNotLogged />
+      ) : (
+        <ContainerAccount>
+          <img src={UserProfileImage} alt="Logo do usuario" />
 
-      <input placeholder="Vandré Raia" disabled="disabled"></input>
-      <input placeholder="vandreraia@gmail.com" disabled="disabled"></input>
-      <input type="password" value="Vandré Raia" disabled="disabled"></input>
-      <button>ATUALIZAR CADASTRO</button>
+          <input value={userData.name} disabled="disabled"></input>
+          <input value={userData.email} disabled="disabled"></input>
+          <input type="password" value="password" disabled="disabled"></input>
+          <button>ATUALIZAR CADASTRO</button>
 
-      <Footer />
-    </ContainerAccount>
+          <Footer />
+        </ContainerAccount>
+      )}
+    </>
   );
 }
 
