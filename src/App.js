@@ -18,7 +18,7 @@ export default function App() {
             <Route path="/account" element={<Account />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
-            <Route path="/product" element={<ProductDetails />} />
+            <Route path="/product/:idProductSelected" element={<ProductDetails />} />
 
           </Routes>
         </BrowserRouter>

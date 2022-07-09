@@ -1,35 +1,33 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import styled from "styled-components";
 
 export default function GameList({ data }) {
-  const navigate = useNavigate();
-  console.log(data);
 
-  function goToProductDetails() {
-    navigate("/product");
-  }
+  
   return (
     <ContainerGameList>
-      <ContentDetails onClick={() => goToProductDetails()}>
-        <img src={data.images.capa} alt={data.titulo} />
-        <DetailsGame>
-          <h4>{data.titulo}</h4>
-          <tt>{data.categoria}</tt>
+      <Link to={`/product/${data._id}`}>
+        <ContentDetails>
+          <img src={data.images[0]} alt={data.titulo} />
+          <DetailsGame>
+            <h4>{data.titulo}</h4>
+            <tt>{data.categoria}</tt>
 
-          <PriceCart>
-            <h2>{data.desconto}</h2>
-            <ion-icon name="add-circle"></ion-icon>
-          </PriceCart>
+            <PriceCart>
+              <h2>{data.desconto}</h2>
+              <ion-icon name="add-circle"></ion-icon>
+            </PriceCart>
 
-          <h6>{data.descricao}</h6>
+            <h6>{data.descricao}</h6>
 
-          <PlataformsIcons>
-            {data.console.map((item) => (
-              <ion-icon name={item}></ion-icon>
-            ))}
-          </PlataformsIcons>
-        </DetailsGame>
-      </ContentDetails>
+            <PlataformsIcons>
+              {data.console.map((item, index) => (
+                <ion-icon name={item}  key={index}></ion-icon>
+              ))}
+            </PlataformsIcons>
+          </DetailsGame>
+        </ContentDetails>
+      </Link>
     </ContainerGameList>
   );
 }
@@ -97,12 +95,13 @@ const DetailsGame = styled.legend`
   }
 `;
 const ContentDetails = styled.div`
-  max-width: 425px;
+  max-width: 430px;
   display: flex;
   position: relative;
 
   width: 93%;
   border-radius: 10px;
+  min-height: 195px;
   height: auto;
 
   padding: 10px;
@@ -125,14 +124,8 @@ const ContentDetails = styled.div`
 `;
 
 const ContainerGameList = styled.div`
-  display: flex;
-  flex-direction: inline;
-  justify-content: space-evenly;
-  flex-wrap: wrap;
-  align-items: center;
-  width: 100%;
-
   img {
+    object-fit: cover;
     width: 130px;
     border-radius: 10px;
     box-shadow: 0px 0px 20px rgba(48, 222, 255, 0.9);

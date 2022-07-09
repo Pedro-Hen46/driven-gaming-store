@@ -1,59 +1,71 @@
 import Footer from "../../components/Footer/Footer";
 import styled from "styled-components";
 import ReactPlayer from "react-player";
+import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 export default function ProductDetails() {
+  const { idProductSelected } = useParams();
+
+  const [gameDetails, setGameDetails] = useState([]);
+
+  useEffect(() => {
+    const promise = axios.get(
+      "https://driven-gaming-store-fullstack.herokuapp.com/product"
+    );
+
+    promise.then((response) => {
+      response.data.forEach((item) => {
+        if (item._id === idProductSelected) {
+          setGameDetails(item);
+        }
+      });
+    });
+    promise.catch((error) => {
+      console.log(error.message);
+    });
+  }, [idProductSelected]);
+
+
   return (
     <ContainerProduct>
-      <DemonstrationImages>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-          <path
-            fill="#000000"
-            fillOpacity="1"
-            d="M0,192L60,208C120,224,240,256,360,245.3C480,235,600,181,720,154.7C840,128,960,128,1080,133.3C1200,139,1320,149,1380,154.7L1440,160L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"
-          ></path>
-        </svg>
-        <img
-          src="https://loja.gameforfun.com.br/wp-content/uploads/2020/02/Red-Dead-Redemption-2-midia-digiital-xbox-one.jpg.webp"
-          alt="Capa do jogo"
-        />
+      {gameDetails.length === 0 ? (
+        ""
+      ) : (
+        <>
+          <DemonstrationImages>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 280">
+              <path
+                fill="#000000"
+                fillOpacity="1"
+                d="M0,192L60,208C120,224,240,256,360,245.3C480,235,600,181,720,154.7C840,128,960,128,1080,133.3C1200,139,1320,149,1380,154.7L1440,160L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"
+              ></path>
+            </svg>
 
-        <img
-          src="https://uploads.jovemnerd.com.br/wp-content/uploads/2018/08/red-dead-redemption-2-portugues-1210x540.png"
-          alt="Capa do jogo"
-        />
-        <img
-          src="https://meups.com.br/wp-content/uploads/2018/10/Capa-16.jpg"
-          alt="Capa do jogo"
-        />
-        <img
-          src="https://uploads.jovemnerd.com.br/wp-content/uploads/2018/08/red-dead-redemption-2-portugues-1210x540.png"
-          alt="Capa do jogo"
-        />
-      </DemonstrationImages>
+            { gameDetails.images.map((item, index) => {
+              return  <img key={index} src={item} alt={gameDetails.titulo} />
+            })}
 
-      <ProductInfo>
-        <h1>Red dead redemption 2 midia digital - pc/ps4/xbox</h1>
-        <div className="player-wrapper">
-          <ReactPlayer
-            className="react-player"
-            url="https://www.youtube.com/watch?v=gmA6MrX81z4&ab_channel=RockstarGames"
-            width="98%"
-            height="98%"
-          />
-        </div>
-        <tt>
-          Red Dead Redemption 2 jogo Xbox One mídia digital Estados Unidos,
-          1899. O fim da era do velho oeste começou, e as autoridades estão
-          caçando as últimas gangues de fora da lei que restam. Os que não se
-          rendem, nem sucumbem, são mortos. Depois de tudo dar errado durante um
-          roubo em uma cidade do oeste chamada Blackwater, Arthur Morgan e a
-          gangue Van der Linde são forçados a fugir.
-        </tt>
+          </DemonstrationImages>
 
-        <button>COMPRAR</button>
-      </ProductInfo>
-
+          <ProductInfo>
+            <h1>{gameDetails.titulo}</h1>
+            <tt>{gameDetails.categoria}</tt>
+            <div className="player-wrapper">
+              <ReactPlayer
+                className="react-player"
+                url={gameDetails.video}
+                width="98%"
+                height="98%"
+              />
+            </div>
+            <tt>{gameDetails.descricao}</tt>
+            {gameDetails.desconto}
+            <button>COMPRAR</button>
+          </ProductInfo>
+        </>
+      )}
       <Footer />
     </ContainerProduct>
   );
@@ -67,6 +79,7 @@ const DemonstrationImages = styled.div`
   svg {
     position: absolute;
     top: 0;
+    left: 0;
   }
   img {
     margin-top: 20px;

@@ -8,10 +8,8 @@ import Carrossel from "../../components/Carrossel/Carrossel.js";
 import GameList from "../../components/GameList/GameList.js";
 
 export default function HomePage() {
-
   //====================== VARIAVEIS DE ESTADO =================//
   const [dataGame, setDataGame] = useState([]);
-
 
   //====================== CONEXÃO BACK =================//
   useEffect(() => {
@@ -31,14 +29,23 @@ export default function HomePage() {
   return (
     <ContainerHome>
       <Carrossel />
-      { dataGame.map((item, index) => <GameList data={item} key={index} />
-      )}
+
+      <ContainerGameList>
+        {dataGame.map((item, index) => (
+          <GameList data={item} key={index} />
+        ))}
+      </ContainerGameList>
 
       <Footer />
     </ContainerHome>
   );
 }
+const ContainerGameList = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 
+`
 const ContainerHome = styled.div`
   @media (max-width: 700px) {
     width: 100%;
@@ -50,7 +57,7 @@ const ContainerHome = styled.div`
     align-items: center;
     background-color: #fff;
 
-    :last-child{
+    :last-child {
       margin-bottom: 50px;
     }
     button {
