@@ -1,26 +1,64 @@
 import { useNavigate } from "react-router-dom";
+import { useState, useContext } from "react";
 import styled from "styled-components";
+import axios from 'axios';
+import UserContext from '../../Context/userContext';
+
 import Logo from "../../lib/images/Login-Driven.png";
 
 export default function LoginPage() {
+  const { setToken, setName } = useContext(UserContext);
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
+
+  function login(event) {
+    event.preventDefault();
+    const body = {
+      email,
+      password
+    };
+    setLoading(true);
+
+    const promise = axios.post("https://driven-gaming-store-fullstack.herokuapp.com/login",
+      body);
+    promise.then((res) => {
+
+      const config = {
+        headers: {
+          Authorization: `Bearer ${res.data.token}`,
+        },
+      };
+
+      setToken({ ...res.data, config });
+      setName(res.data.name)
+
+      localStorage.setItem("user", JSON.stringify({ ...res.data, config }));
+      setLoading(false);
+      navigate("/");
+    }
+    )
+
+    promise.catch(() => {
+      setLoading(false);
+      alert("falha de login");
+    }
+    );
+  }
 
   function goToRegisterPage() {
     navigate("/register");
-  }
-  function goToHomePage() {
-    navigate("/");
   }
 
   return (
     <ContainerLogin>
       <img src={Logo} alt="Logo da empresa" />
-      <input type="email" placeholder="Entre com seu email"></input>
-      <input type="password" placeholder="Entre com a sua senha"></input>
-      <button onClick={() => goToHomePage()}>ENTRAR</button>
-      <span onClick={() => goToRegisterPage()}>
-        Não tem conta? Cadastre-se agora!
-      </span>
+
+      <input disabled={loading ? true : false} type="email" placeholder="Digite seu e-mail" onChange={e => setEmail(e.target.value)}></input>
+      <input disabled={loading ? true : false} type="password" placeholder="Digite a sua senha" onChange={e => setPassword(e.target.value)}></input>
+      <button onClick={login}>{loading ? "" : "ENTRAR"}</button>
+      <span onClick={() => goToRegisterPage()}>Não tem conta? Cadastre-se agora!</span>
     </ContainerLogin>
   );
 }
@@ -56,6 +94,7 @@ const ContainerLogin = styled.div`
     border-radius: 5px;
     padding: 10px;
     font-size: 16px;
+    font-weight: 200;
     font-family: "Montserrat";
     :hover {
       cursor: pointer;

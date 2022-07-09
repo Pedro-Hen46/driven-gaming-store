@@ -1,27 +1,11 @@
 import Footer from "../../components/Footer/Footer";
 import UserProfileImage from "../../lib/images/Profile-user.png";
 
-import axios from "axios";
-import { useState } from "react";
+
 import styled from "styled-components";
 
 export default function AccountPage() {
-  const [teste, setTeste] = useState(
-    "Clique no botão abaixo para testar a conexão com o Banco de Dados"
-  );
-  function testeAPI() {
-    const promise = axios.get(
-      "https://driven-gaming-store-fullstack.herokuapp.com/teste"
-    );
 
-    promise.then((response) => {
-      setTeste(response.data);
-    });
-
-    promise.catch(() => {
-      setTeste("Ih deu ruim rapaziada... Tente novamente.");
-    });
-  }
 
   //=============== INICIO DO RENDER =================//
   return (
@@ -31,7 +15,7 @@ export default function AccountPage() {
       <input placeholder="Vandré Raia" disabled="disabled"></input>
       <input placeholder="vandreraia@gmail.com" disabled="disabled"></input>
       <input type="password" value="Vandré Raia" disabled="disabled"></input>
-      <button onClick={() => testeAPI()}>ATUALIZAR CADASTRO</button>
+      <button>ATUALIZAR CADASTRO</button>
 
       <Footer />
     </ContainerAccount>

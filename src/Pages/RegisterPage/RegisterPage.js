@@ -1,20 +1,47 @@
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import axios from "axios";
 
-//============= IMPORTANDO IMAGENS ============//
-import LogoRegister from "../../lib/images/mestreYodaHappy.png";
-import LogoFailed from "../../lib/images/mestreYodaSad.png";
+import Logo from "../../lib/images/mestreYodaHappy.png";
 
 
 export default function RegisterPage() {
   const navigate = useNavigate();
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
+  const [confirmPassword, setConfirmPassword] = useState();
+  const [name, setName] = useState();
+  const [loading, setLoading] = useState(false);
+  
+  function registerAcount(event) {
+    const body = {
+      email,
+      password,
+      name,
+    };
 
-  const [fail, setFail] = useState(false);
+    if (password === confirmPassword) {
 
-
-  function createUser(){
-    setFail(!fail);
+      event.preventDefault();
+      setLoading(true);
+      console.log(body)
+      const promise = axios.post("https://driven-gaming-store-fullstack.herokuapp.com/sign-up"
+        , body);
+      promise.then((res) => {
+        console.log(res)
+        setLoading(false);
+        navigate("/");
+      }
+      );
+      promise.catch(() => {
+        setLoading(false);
+        alert("falha de registro");
+      }
+      );
+    } else {
+      alert("As senhas não coincidem")
+    }
   }
 
   function goToLoginPage() {
@@ -23,15 +50,15 @@ export default function RegisterPage() {
 
   return (
     <ContainerRegister>
-      <img src={ fail ? LogoFailed : LogoRegister} alt="Logo da empresa" />
-      <input type="text" placeholder="Entre com seu nome"></input>
-      <input type="email" placeholder="Entre com seu email"></input>
-      <input type="password" placeholder="Entre com seu password senha"></input>
-      <input type="password" placeholder="Confirme a sua senha"></input>
-      <button onClick={() => createUser()}>CADASTRAR</button>
-      <span onClick={() => goToLoginPage()}>
-        Já tem uma conta? Faça o login agora!
-      </span>
+      <img src={Logo} alt="Logo Yoda" />
+      <form onSubmit={registerAcount} >
+        <input disabled={loading ? true : false} type="text" placeholder="Nome" onChange={e => setName(e.target.value)}></input>
+        <input disabled={loading ? true : false} type="email" placeholder="E-mail" onChange={e => setEmail(e.target.value)}></input>
+        <input disabled={loading ? true : false} type="password" placeholder="Senha" onChange={e => setPassword(e.target.value)}></input>
+        <input disabled={loading ? true : false} type="password" placeholder="Confirme a senha" onChange={e => setConfirmPassword(e.target.value)}></input>
+        <button type="submit">{loading ? "" : "CADASTRAR"}</button>
+      </form>
+      <span onClick={() => goToLoginPage()}>Já tem uma conta? Faça o login agora!</span>
     </ContainerRegister>
   );
 }
@@ -65,6 +92,7 @@ const ContainerRegister = styled.div`
     border-radius: 5px;
     padding: 10px;
     font-size: 16px;
+    font-weight: 200;
     font-family: "Montserrat";
 
     :hover {
