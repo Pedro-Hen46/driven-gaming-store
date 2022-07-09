@@ -21,8 +21,8 @@ export default function RegisterPage() {
 
     if (password === confirmPassword) {
 
-      setLoading(true);
       event.preventDefault();
+      setLoading(true);
       console.log(body)
       const promise = axios.post("https://driven-gaming-store-fullstack.herokuapp.com/sign-up"
         , body);
@@ -38,7 +38,7 @@ export default function RegisterPage() {
       }
       );
     } else {
-      alert("Senhas nao coincide")
+      alert("As senhas não coincidem")
     }
   }
 
@@ -48,13 +48,13 @@ export default function RegisterPage() {
 
   return (
     <ContainerRegister>
-      <img src={Logo} alt="Logo da empresa" />
+      <img src={Logo} alt="Logo Yoda" />
       <form onSubmit={registerAcount} >
         <input disabled={loading ? true : false} type="text" placeholder="Nome" onChange={e => setName(e.target.value)}></input>
         <input disabled={loading ? true : false} type="email" placeholder="E-mail" onChange={e => setEmail(e.target.value)}></input>
         <input disabled={loading ? true : false} type="password" placeholder="Senha" onChange={e => setPassword(e.target.value)}></input>
         <input disabled={loading ? true : false} type="password" placeholder="Confirme a senha" onChange={e => setConfirmPassword(e.target.value)}></input>
-        <button type="submit">{loading ? "" : "Cadastrar"}</button>
+        <button type="submit">{loading ? "" : "CADASTRAR"}</button>
       </form>
       <span onClick={() => goToLoginPage()}>Já tem uma conta? Faça o login agora!</span>
     </ContainerRegister>

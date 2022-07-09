@@ -56,7 +56,7 @@ export default function LoginPage() {
 
       <input disabled={loading ? true : false} type="email" placeholder="e-mail" onChange={e => setEmail(e.target.value)}></input>
       <input disabled={loading ? true : false} type="password" placeholder="senha" onChange={e => setPassword(e.target.value)}></input>
-      <button onClick={login}>{loading ? "" : "Entrar"}</button>
+      <button onClick={login}>{loading ? "" : "ENTRAR"}</button>
       <span onClick={() => goToRegisterPage()}>Não tem conta? Cadastre-se agora!</span>
     </ContainerLogin>
   );
