@@ -4,6 +4,7 @@ import UserNotLogged from "../../components/UserNotLogged/UserNotLogged.js";
 
 import styled from "styled-components";
 import { useEffect, useState } from "react";
+import Header from "../../components/Header/Header";
 
 export default function AccountPage() {
   const [userData, setUserData] = useState(null);
@@ -24,7 +25,8 @@ export default function AccountPage() {
     <>
       {userData === null ? (
         <UserNotLogged />
-      ) : (
+      ) : (<>
+          <Header />
         <ContainerAccount>
           <img src={UserProfileImage} alt="Logo do usuario" />
 
@@ -40,6 +42,7 @@ export default function AccountPage() {
 
           <Footer />
         </ContainerAccount>
+        </>
       )}
     </>
   );
@@ -50,6 +53,7 @@ const ContainerAccount = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-top: -80px;
 
   width: 100%;
   height: 100vh;
@@ -72,7 +76,8 @@ const ContainerAccount = styled.div`
   }
 
   img {
-    height: 30%;
+    z-index: 1;
+    height: 20%;
     margin-bottom: 10px;
   }
 

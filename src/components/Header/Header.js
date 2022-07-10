@@ -18,31 +18,31 @@ export default function Header() {
   );
 }
 const ContainerHeader = styled.div`
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 100%!important;
+  display: flex!important;
+  align-items: center !important;
+  justify-content: center !important;
   
   ion-icon{
-    color: #ffffff;
-    font-size: 38px;
-    margin-top: 10px;
-    margin-left: -40px;
+    color: #ffffff!important;
+    font-size: 38px!important;
+    margin-top: 10px!important;
+    margin-left: -20px!important;
   }
 
   img {
-    object-fit: contain;
-    margin-top: 10px;
-    width: 80%;
-    height: 90px;
-    z-index: 1;
+    object-fit: contain!important;
+    margin-top: 10px!important;
+    width: 80%!important;
+    height: 90px!important;
+    z-index: 1!important;
   }
   svg{
-    object-fit: contain;
-    height: 250px;
-    position: fixed;
-    top: 0;
-    left: 0;
+    object-fit: contain!important;
+    height: 250px!important;
+    position: fixed!important;
+    top: 0!important;
+    left: 0!important;
     z-index: 0 !important;
   }
 `;

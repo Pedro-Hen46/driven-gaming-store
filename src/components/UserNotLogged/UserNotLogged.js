@@ -2,23 +2,37 @@ import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import yoda from "../../lib/images/yodaJedi.png";
 import Footer from "../Footer/Footer";
+import Header from "../Header/Header";
 
 export default function UserNotLogged() {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
-    function goToLogin(){
-        navigate("/login");
-    }
+  function goToLogin() {
+    navigate("/login");
+  }
 
   return (
-    <ContainerAccount>
-      <h1>Ops, parece que você não está logado, para prosseguir clique abaixo...</h1>
-      <button onClick={() => goToLogin()}>LOGAR AGORA</button>
-      <img onClick={() => window.alert("Não cutuca mestre, passando conhecimento mestre está!")} src={yoda} alt="Yoda dando o bizu"/>
-      <tt>“Raiva, medo, agressão. Ao lado sombrio elas pertencem”</tt>
+    <>
+      <Header />
+      <ContainerAccount>
+        <h1>
+          Ops, parece que você não está logado, para prosseguir clique abaixo...
+        </h1>
+        <button onClick={() => goToLogin()}>LOGAR AGORA</button>
+        <img
+          onClick={() =>
+            window.alert(
+              "Não cutuca mestre, passando conhecimento mestre está!"
+            )
+          }
+          src={yoda}
+          alt="Yoda dando o bizu"
+        />
+        <tt>“Raiva, medo, agressão. Ao lado sombrio elas pertencem”</tt>
 
-      <Footer />
-    </ContainerAccount>
+        <Footer />
+      </ContainerAccount>
+    </>
   );
 }
 
@@ -28,39 +42,39 @@ const ContainerAccount = styled.div`
   justify-content: center;
   align-items: center;
   padding: 40px;
+  margin-top: -100px;
 
   width: 100%;
   height: 100vh;
   background-image: linear-gradient(#30deff, black, black);
-    tt{
-        color: #ffffff;
-        text-transform: uppercase;
-        font-family: 'Montserrat';
-        font-weight: 400;
-        text-shadow: 0px 0px 10px rgba(48, 222, 255, 99);;
-        font-size: 20px;
-        position: fixed;
-        text-align: center;
-        bottom: 70px;
-    }
-    h1{
-        color: #ffffff;
-        font-family: 'Montserrat';
-        font-style: italic;
-        font-weight: 300;
-        text-align: center;
-        font-size: 24px;
-        margin-bottom: 20px;
-
-    }
-    img{
-        object-fit: contain;
-        width: 100%;
-        height: 45%;
-        min-height: 400px;
-        position: fixed;
-        bottom: -120px;
-    }
+  tt {
+    color: #ffffff;
+    text-transform: uppercase;
+    font-family: "Montserrat";
+    font-weight: 400;
+    text-shadow: 0px 0px 10px rgba(48, 222, 255, 99);
+    font-size: 20px;
+    position: fixed;
+    text-align: center;
+    bottom: 70px;
+  }
+  h1 {
+    color: #ffffff;
+    font-family: "Montserrat";
+    font-style: italic;
+    font-weight: 300;
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  img {
+    object-fit: contain;
+    width: 100%;
+    height: 45%;
+    min-height: 400px;
+    position: fixed;
+    bottom: -120px;
+  }
   button {
     width: 100%;
     height: 70px;
@@ -74,7 +88,7 @@ const ContainerAccount = styled.div`
     border: thin solid #30deff;
     box-shadow: 0px 0px 35px rgba(48, 222, 255, 0.4);
     margin-bottom: 15%;
-    
+
     transition: linear 0.4s;
     :hover {
       cursor: pointer;
