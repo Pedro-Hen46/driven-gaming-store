@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import Footer from "../../components/Footer/Footer.js";
 import Carrossel from "../../components/Carrossel/Carrossel.js";
 import GameList from "../../components/GameList/GameList.js";
+import Header from "../../components/Header/Header.js";
 
 export default function HomePage() {
   //====================== VARIAVEIS DE ESTADO =================//
@@ -28,6 +29,8 @@ export default function HomePage() {
 
   return (
     <ContainerHome>
+      <Header />
+
       <Carrossel />
 
       <ContainerGameList>
@@ -37,9 +40,11 @@ export default function HomePage() {
       </ContainerGameList>
 
       <Footer />
+      
     </ContainerHome>
   );
 }
+
 const ContainerGameList = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -53,7 +58,7 @@ const ContainerHome = styled.div`
   justify-content: center;
   align-items: center;
 
-  @media (max-width: 700px) {
+
     width: 100%;
     height: auto;
     display: flex;
@@ -75,5 +80,5 @@ const ContainerHome = styled.div`
       font-weight: bold;
       font-size: 22px;
     }
-  }
+  
 `;

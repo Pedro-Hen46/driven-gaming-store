@@ -12,7 +12,7 @@ export default function UserNotLogged() {
 
   return (
     <ContainerAccount>
-      <h1>Ops, parece que você não está logado, para prosseguir clique abaixo.</h1>
+      <h1>Ops, parece que você não está logado, para prosseguir clique abaixo...</h1>
       <button onClick={() => goToLogin()}>LOGAR AGORA</button>
       <img onClick={() => window.alert("Não cutuca mestre, passando conhecimento mestre está!")} src={yoda} alt="Yoda dando o bizu"/>
       <tt>“Raiva, medo, agressão. Ao lado sombrio elas pertencem”</tt>
@@ -46,13 +46,18 @@ const ContainerAccount = styled.div`
     h1{
         color: #ffffff;
         font-family: 'Montserrat';
-        font-weight: 400;
+        font-style: italic;
+        font-weight: 300;
         text-align: center;
-        font-size: 28px;
+        font-size: 24px;
         margin-bottom: 20px;
 
     }
     img{
+        object-fit: contain;
+        width: 100%;
+        height: 45%;
+        min-height: 400px;
         position: fixed;
         bottom: -120px;
     }
@@ -68,6 +73,7 @@ const ContainerAccount = styled.div`
     font-size: 22px;
     border: thin solid #30deff;
     box-shadow: 0px 0px 35px rgba(48, 222, 255, 0.4);
+    margin-bottom: 15%;
     
     transition: linear 0.4s;
     :hover {

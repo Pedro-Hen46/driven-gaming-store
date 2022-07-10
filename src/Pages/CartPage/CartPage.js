@@ -1,6 +1,7 @@
 import Footer from "../../components/Footer/Footer";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
+import Header from "../../components/Header/Header";
 
 export default function CartPage() {
   const navigate = useNavigate();
@@ -11,6 +12,7 @@ export default function CartPage() {
   }
   return (
     <ContainerCart>
+      <Header />
       <h1>Parece que você não está logado.</h1>
       <button  onClick={() => goToLoginPage()}>LOGAR AGORA</button>
       <Footer />
@@ -19,7 +21,6 @@ export default function CartPage() {
 }
 
 const ContainerCart = styled.div`
-  @media (max-width: 700px) {
     width: 100%;
     height: 100vh;
     display: flex;
@@ -56,5 +57,5 @@ const ContainerCart = styled.div`
         box-shadow: 0px 0px 20px rgba(0,0,0,0.3);
       }
     }
-  }
+  
 `;

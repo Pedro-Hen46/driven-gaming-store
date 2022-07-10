@@ -9,8 +9,15 @@ export default function AccountPage() {
   const [userData, setUserData] = useState(null);
 
   useEffect(() => {
-    setUserData(JSON.parse(localStorage.getItem('user'))); //Pegando os dados do local storage.
+    setUserData(JSON.parse(localStorage.getItem("user"))); //Pegando os dados do local storage.
   }, []);
+
+  function logoutAccount() {
+    if (window.confirm("Tem certeza que deseja sair da sua conta?")) {
+      localStorage.removeItem("user");
+      setUserData(null);
+    }
+  }
 
   //=============== INICIO DO RENDER =================//
   return (
@@ -24,7 +31,12 @@ export default function AccountPage() {
           <input value={userData.name} disabled="disabled"></input>
           <input value={userData.email} disabled="disabled"></input>
           <input type="password" value="password" disabled="disabled"></input>
-          <button>ATUALIZAR CADASTRO</button>
+          <button>
+            <ion-icon name="cog-outline"></ion-icon>ATUALIZAR CONTA
+          </button>
+          <button onClick={() => logoutAccount()}>
+            <ion-icon name="log-out-outline"></ion-icon>SAIR DA CONTA
+          </button>
 
           <Footer />
         </ContainerAccount>
@@ -60,22 +72,32 @@ const ContainerAccount = styled.div`
   }
 
   img {
-    width: 250px;
-    margin-bottom: 30px;
+    height: 30%;
+    margin-bottom: 10px;
   }
 
   button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     width: 80%;
-    height: 50px;
+    height: 70px;
     background-color: black;
     border: thin solid black;
     border-radius: 10px;
     letter-spacing: 3px;
     color: white;
     font-weight: 300;
-    font-size: 22px;
-    transition: linear 0.4s;
+    font-size: 18px;
     border: thin solid #30deff;
+    margin-bottom: 10px;
+    transition: linear 0.4s;
+
+    ion-icon {
+      font-size: 32px;
+      margin-right: 20px;
+    }
 
     :hover {
       cursor: pointer;
