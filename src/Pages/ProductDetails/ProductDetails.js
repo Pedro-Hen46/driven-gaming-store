@@ -9,6 +9,20 @@ export default function ProductDetails() {
   const { idProductSelected } = useParams();
 
   const [gameDetails, setGameDetails] = useState([]);
+  
+  const [cartItens, setCartItens] = useState( () => {
+    const cartCache = localStorage.getItem('@cart');
+    
+    if(cartCache){
+      return JSON.parse(cartCache);
+    }
+    return [];
+
+  });
+
+  useEffect(() => {
+    localStorage.setItem('@cart', JSON.stringify(cartItens));
+  }, [cartItens]);
 
   useEffect(() => {
     const promise = axios.get(
@@ -27,7 +41,32 @@ export default function ProductDetails() {
     });
   }, [idProductSelected]);
 
-  console.log(gameDetails);
+  function addItemOnCart() {
+    const newItem = {
+      id: idProductSelected,
+      qtd: 1,
+    };
+    const itemExists = cartItens.find((item) => String(item.id) === idProductSelected);
+    // console.log(cartItens)
+    
+    if (itemExists) {
+      const cartUpdated = cartItens.map((item) => {
+        if (item.id === idProductSelected) {
+          return {
+            ...item,
+            qtd: item.qtd + 1,
+          };
+        }
+        return item;
+      });
+      setCartItens(cartUpdated);
+    } else {
+      setCartItens((state) => [...state, newItem]);
+      console.log(cartItens)
+    }
+    window.alert("Item adicionado no carrinho");
+  }
+
   return (
     <ContainerProduct>
       {gameDetails.length === 0 ? (
@@ -72,7 +111,7 @@ export default function ProductDetails() {
               <h2>{gameDetails.desconto}</h2>
             </GamePrice>
 
-            <button>COMPRAR</button>
+            <button onClick={() => addItemOnCart()}>COMPRAR</button>
           </ProductInfo>
         </>
       )}
