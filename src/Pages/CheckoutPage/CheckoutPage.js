@@ -37,10 +37,10 @@ export default function CheckoutPage() {
     promise.catch((response) => {
       console.log(response.data);
     });
-  }, []);
+  }, [dataCart]);
 
   prices.map((prices) => {
-    totalValue += Number(prices);
+    return totalValue += Number(prices);
   });
 
   //============= TESTE CODE =============================

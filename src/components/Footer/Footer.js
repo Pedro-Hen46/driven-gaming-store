@@ -43,7 +43,7 @@ export default function Footer() {
 
 const MenuContainer = styled.div`
   z-index: 1;
-  @media (max-width: 700px) {
+  @media (max-width: 2560px) {
     width: 100%;
     height: 50px;
     display: flex;

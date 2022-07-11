@@ -1,10 +1,10 @@
 import styled from "styled-components";
-import Logo from '../../lib/images/logo-drivengaming.png';
+import Logo from "../../lib/images/logo-drivengaming.png";
 
 export default function Header() {
   return (
     <ContainerHeader>
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 400">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 380">
         <path
           fill="#000000"
           fillOpacity="1"
@@ -13,36 +13,46 @@ export default function Header() {
       </svg>
 
       <img src={Logo} alt="logo" />
-      <ion-icon name="menu-outline"></ion-icon>
     </ContainerHeader>
   );
 }
 const ContainerHeader = styled.div`
-  width: 100%!important;
-  display: flex!important;
-  align-items: center !important;
-  justify-content: center !important;
-  
-  ion-icon{
-    color: #ffffff!important;
-    font-size: 38px!important;
-    margin-top: 10px!important;
-    margin-left: -20px!important;
+  @media (max-width: 830px) {
+    width: 100%;
+    min-height: 200px;
+    margin-bottom: -100px;
+    svg {
+      height: 250px;
+      position: absolute !important;
+      top: 0!important;
+      left: 0!important;
+    }
+  }
+
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  position: relative;
+
+  ion-icon {
+    color: #ffffff;
+    font-size: 38px;
+    margin-top: 10px;
+    margin-left: -20px;
   }
 
   img {
-    object-fit: contain!important;
-    margin-top: 10px!important;
-    width: 80%!important;
-    height: 90px!important;
-    z-index: 1!important;
+    object-fit: contain;
+    margin-top: 10px;
+    width: 80%;
+    height: 90px;
+    z-index: 1;
   }
-  svg{
-    object-fit: contain!important;
-    height: 250px!important;
-    position: fixed!important;
-    top: 0!important;
-    left: 0!important;
-    z-index: 0 !important;
+  svg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 0;
   }
 `;

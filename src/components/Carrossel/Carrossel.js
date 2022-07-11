@@ -39,8 +39,15 @@ const ContainerCarrossel = styled.div`
 `;
 
 const GamesPromotion = styled.div`
+@media ( max-width: 760px){
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
   width: 100%;
   display: flex;
+  justify-content: center;
+  align-items: center;
   overflow-y: hidden;
   padding: 2%;
   img {
