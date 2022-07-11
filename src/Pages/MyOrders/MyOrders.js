@@ -10,8 +10,10 @@ export default function CheckoutPage() {
   const [userData, setUserData] = useState(() => {
     return JSON.parse(localStorage.getItem("user"));
   });
-
+  
   useEffect(() => {
+
+    if (userData !== null) {
     const promise = axios.get(
       "https://driven-gaming-store-fullstack.herokuapp.com/myorders",
       { headers: { email: userData.email } }
@@ -24,7 +26,8 @@ export default function CheckoutPage() {
     promise.catch((error) => {
       console.log(error);
     });
-  }, [userData.email]);
+  }
+  }, [userData]);
 
   return (
     <>
