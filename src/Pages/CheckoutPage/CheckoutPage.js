@@ -184,7 +184,9 @@ const ContainerCheckout = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
   input {
+    z-index: 1;
     background-color: black;
     color: white;
     height: 60px;
@@ -197,11 +199,13 @@ const ContainerCheckout = styled.div`
     border: thin solid #30deff;
 
     :hover {
-      cursor: not-allowed;
+      cursor: pointer;
+      box-shadow: 0px 0px 20px rgba(48, 222, 255, 99);
     }
   }
 
   form {
+    z-index: 1;
     width: 90%;
     display: flex;
     flex-direction: column;
@@ -210,6 +214,11 @@ const ContainerCheckout = styled.div`
       height: 60px;
       padding: 10px;
       border-radius: 10px;
+      :hover {
+        cursor: pointer;
+
+        box-shadow: 0px 0px 20px rgba(48, 222, 255, 99);
+      }
     }
 
     tt {
@@ -220,6 +229,7 @@ const ContainerCheckout = styled.div`
     }
   }
   h1 {
+    z-index: 1;
     margin-top: 0%;
     margin-bottom: 20px;
     color: #30deff;

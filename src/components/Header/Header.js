@@ -51,7 +51,8 @@ const ContainerHeader = styled.div`
     z-index: 1;
   }
   svg {
-    position: fixed;
+    z-index: 0!important;
+    position: absolute;
     top: 0;
     left: 0;
     z-index: 0;
