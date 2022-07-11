@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useState } from "react";
 
 
 import Account from "./Pages/AccountPage/Account.js";
@@ -8,7 +9,7 @@ import LoginPage from "./Pages/LoginPage/LoginPage.js";
 import ProductDetails from "./Pages/ProductDetails/ProductDetails.js";
 import RegisterPage from "./Pages/RegisterPage/RegisterPage.js";
 import UserContext from "./Context/userContext";
-import { useState } from "react";
+import CheckoutPage from "./Pages/CheckoutPage/CheckoutPage.js";
 
 
 export default function App() {
@@ -24,6 +25,8 @@ export default function App() {
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
             <Route path="/product/:idProductSelected" element={<ProductDetails />} />
+            <Route path="/checkout" element={<CheckoutPage />} />
+
         </Routes>
       </UserContext.Provider>
     </BrowserRouter>

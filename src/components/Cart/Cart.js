@@ -77,7 +77,7 @@ export default function CartPage({ dataCart }) {
           ))}
         </DetailsGameSelected>
         <h1>VALOR TOTAL: R$ {totalValue.toFixed(2)}</h1>
-        <button>FINALIZAR COMPRA</button>
+        <button onClick={() => navigate("/checkout")}>FINALIZAR COMPRA</button>
       </ContainerCart>
     </>
   );

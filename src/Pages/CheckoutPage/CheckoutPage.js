@@ -55,10 +55,8 @@ export default function CheckoutPage() {
   const [phone, setPhone] = useState();
   const [reference, setReference] = useState();
   const [payment, setPayment] = useState();
-  console.log(payment)
 
   //================== STATES PARA O FORM ===============
-  console.log(userData)
   useEffect(() => {
     setUserData(JSON.parse(localStorage.getItem("user"))); //Pegando os dados do local storage.
   }, []);
@@ -73,11 +71,14 @@ export default function CheckoutPage() {
         cep: CEP,
         phoneContact: phone,
         reference: reference,
+        valueOrder: totalValue.toFixed(2),
         payment: payment, 
-        date: dayjs().format("HH:mm:ss")
+        date: dayjs().format("DD-MM-YY HH:mm:ss")
     }
 
-    console.log(dataPayment)
+    if(window.confirm("Deseja finalizar o pagamento?")){
+        localStorage.setItem("@cart", []);
+    }
   }
 
 
@@ -98,7 +99,7 @@ export default function CheckoutPage() {
       ) : (
         <ContainerCheckout>
           <h1>Entre com os dados:</h1>
-          <form onSubmit={() => completePayment()}>
+          <form onSubmit={(event) => completePayment(event)}>
             <input
               type="text"
               placeholder="Digite o Endereço"
