@@ -21,6 +21,7 @@ const ContainerHeader = styled.div`
     width: 100%;
     min-height: 200px;
     margin-bottom: -100px;
+    overflow: hidden;
     svg {
       height: 250px;
       position: absolute !important;
