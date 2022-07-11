@@ -12,7 +12,23 @@ export default function HomePage() {
   //====================== VARIAVEIS DE ESTADO =================//
   const [dataGame, setDataGame] = useState([]);
 
+  const [cartItens, setCartItens] = useState( () => {
+    const cartCache = localStorage.getItem('@cart');
+    
+    if(cartCache){
+      return JSON.parse(cartCache);
+    }
+    return [];
+
+  });
+
+
   //====================== CONEXÃO BACK =================//
+  useEffect(() => {
+    localStorage.setItem('@cart', JSON.stringify(cartItens));
+  }, [cartItens]);
+
+
   useEffect(() => {
     const promise = axios.get(
       "https://driven-gaming-store-fullstack.herokuapp.com/product"
@@ -25,7 +41,11 @@ export default function HomePage() {
     promise.catch((response) => {
       console.log(response.data);
     });
+
+
+
   }, []);
+
 
   return (
     <ContainerHome>
@@ -35,7 +55,7 @@ export default function HomePage() {
 
       <ContainerGameList>
         {dataGame.map((item, index) => (
-          <GameList data={item} key={index} />
+          <GameList cartItens={cartItens} setCartItens={setCartItens} data={item} key={index} />
         ))}
       </ContainerGameList>
 
@@ -49,7 +69,6 @@ const ContainerGameList = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  padding-left: 20px;
 `;
 const ContainerHome = styled.div`
   width: 100%;
