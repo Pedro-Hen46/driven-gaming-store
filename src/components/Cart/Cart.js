@@ -33,19 +33,7 @@ export default function CartPage({ dataCart }) {
     });
   }, [dataCart]);
 
-  // console.log(dataCart);
 
-  if (infoProduct) {
-    infoProduct.forEach((item) => {
-      dataCart.forEach((product) => {
-        if (item._id === product.id) {
-          console.log(product);
-        } else return [];
-      });
-    });
-  }
-
-  // console.log(prices)
 
   prices.map((prices) => {
     totalValue += Number(prices);

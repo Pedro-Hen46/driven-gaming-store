@@ -65,22 +65,32 @@ export default function CheckoutPage() {
     event.preventDefault();
 
     if (adress && bairro && CEP && phone && payment) {
-      const dataPayment = {
-        email: userData.email,
-        endereco: adress,
-        district: bairro,
-        cep: CEP,
-        phoneContact: phone,
-        reference: reference,
-        valueOrder: totalValue.toFixed(2),
-        payment: payment,
-        date: dayjs().format("DD-MM-YY HH:mm:ss"),
-        products: infoProduct
-      };
-
       if (window.confirm("Deseja finalizar o pagamento?")) {
-        console.log(dataPayment);
-        navigate("/myorders")
+        const dataPayment = {
+          email: userData.email,
+          endereco: adress,
+          district: bairro,
+          cep: CEP,
+          phoneContact: phone,
+          reference: reference,
+          valueOrder: totalValue.toFixed(2),
+          payment: payment,
+          date: dayjs().format("DD-MM-YY HH:mm:ss"),
+          products: infoProduct,
+        };
+        const promise = axios.post(
+          "https://driven-gaming-store-fullstack.herokuapp.com/myorders",
+          dataPayment
+        );
+
+        promise.then((response) => {
+          console.log(response.data);
+          navigate("/myorders");
+        });
+
+        promise.catch((error) => {
+          console.log(error);
+        });
       }
     } else {
       window.alert("Por favor entre com os valores para prosseguir...");
