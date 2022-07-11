@@ -10,6 +10,7 @@ import ProductDetails from "./Pages/ProductDetails/ProductDetails.js";
 import RegisterPage from "./Pages/RegisterPage/RegisterPage.js";
 import UserContext from "./Context/userContext";
 import CheckoutPage from "./Pages/CheckoutPage/CheckoutPage.js";
+import MyOrders from "./Pages/MyOrders/MyOrders.js";
 
 
 export default function App() {
@@ -26,7 +27,7 @@ export default function App() {
             <Route path="/register" element={<RegisterPage />} />
             <Route path="/product/:idProductSelected" element={<ProductDetails />} />
             <Route path="/checkout" element={<CheckoutPage />} />
-
+            <Route path="/myorders" element={<MyOrders />} />
         </Routes>
       </UserContext.Provider>
     </BrowserRouter>

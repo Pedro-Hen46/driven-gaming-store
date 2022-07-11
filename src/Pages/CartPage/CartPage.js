@@ -6,6 +6,7 @@ import Cart from "../../components/Cart/Cart";
 
 export default function CartPage() {
   
+  
   const dataCart = JSON.parse(localStorage.getItem("@cart"));
 
   return (

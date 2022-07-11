@@ -13,6 +13,9 @@ export default function Footer() {
   function goToAccount() {
     navigate("/account");
   }
+  function goToMyOrders() {
+    navigate("/myorders");
+  }
 
   return (
     <MenuContainer>
@@ -24,10 +27,16 @@ export default function Footer() {
         <ion-icon name="cart"></ion-icon> <span>Carrinho</span>
       </div>
 
+      <div onClick={() => goToMyOrders()}>
+        <ion-icon name="basket"></ion-icon>
+        <span>Meus pedidos</span>
+      </div>
+      
       <div onClick={() => goToAccount()}>
         <ion-icon name="person"></ion-icon>
         <span>Minha conta</span>
       </div>
+
     </MenuContainer>
   );
 }

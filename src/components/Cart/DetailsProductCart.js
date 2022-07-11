@@ -7,7 +7,7 @@ export default function DetailsProductCart({ data }) {
       <img src={data.images[0]} alt={data.titulo} />
       <DetailsProduct>
         <h4>{data.titulo}</h4>
-        <h5>Quantidade: {data.qtd}</h5>
+        <h5>Quantidade: ...desenvolvendo{data.qtd}</h5>
         <h4>R$ {data.desconto.replace(".", ",")}</h4>
       </DetailsProduct>
     </ContainerDetailsProduct>

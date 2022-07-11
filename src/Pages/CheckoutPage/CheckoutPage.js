@@ -61,10 +61,11 @@ export default function CheckoutPage() {
     setUserData(JSON.parse(localStorage.getItem("user"))); //Pegando os dados do local storage.
   }, []);
 
-  function completePayment(event){
+  function completePayment(event) {
     event.preventDefault();
 
-    const dataPayment = {
+    if (adress && bairro && CEP && phone && payment) {
+      const dataPayment = {
         email: userData.email,
         endereco: adress,
         district: bairro,
@@ -72,15 +73,19 @@ export default function CheckoutPage() {
         phoneContact: phone,
         reference: reference,
         valueOrder: totalValue.toFixed(2),
-        payment: payment, 
-        date: dayjs().format("DD-MM-YY HH:mm:ss")
-    }
+        payment: payment,
+        date: dayjs().format("DD-MM-YY HH:mm:ss"),
+        products: infoProduct
+      };
 
-    if(window.confirm("Deseja finalizar o pagamento?")){
-        localStorage.setItem("@cart", []);
+      if (window.confirm("Deseja finalizar o pagamento?")) {
+        console.log(dataPayment);
+        navigate("/myorders")
+      }
+    } else {
+      window.alert("Por favor entre com os valores para prosseguir...");
     }
   }
-
 
   return (
     <>
@@ -135,16 +140,21 @@ export default function CheckoutPage() {
                 setPhone(e.target.value);
               }}
             ></input>
-            <tt>Selecione a forma de pagamento:</tt>
-            <select  onChange={(e) => {
+            <select
+              placeholder="Selecione a forma de pagamento"
+              onChange={(e) => {
                 setPayment(e.target.value);
-              }}>
+              }}
+            >
+              <option defaultValue="" disabled selected>
+                Selecione a forma de pagamento
+              </option>
               <option value="Boleto">Boleto</option>
               <option value="Cartão de Crédito">Cartão de Crédito</option>
               <option value="Pix">Pix</option>
             </select>
             <button onClick={() => navigate("/checkout")}>
-              FINALIZAR COMPRA
+              EFETUAR PAGAMENTO
             </button>
           </form>
           <h1>VALOR DO PEDIDO: R$ {totalValue.toFixed(2)}</h1>
