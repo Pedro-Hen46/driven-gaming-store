@@ -108,7 +108,7 @@ export default function ProductDetails() {
 
             <GamePrice>
               <ion-icon name="cart"></ion-icon>
-              <h2>{gameDetails.desconto}</h2>
+              <h2>R$ {gameDetails.desconto.replace(".", ",")}</h2>
             </GamePrice>
 
             <button onClick={() => addItemOnCart()}>COMPRAR</button>
