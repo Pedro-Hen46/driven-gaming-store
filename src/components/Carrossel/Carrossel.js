@@ -3,28 +3,28 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-export default function Carrossel() {
+export default function Carrossel({ setLoading }) {
   const [dataGame, setDataGame] = useState([]);
 
   useEffect(() => {
     const promise = axios.get(
       "https://driven-gaming-store-fullstack.herokuapp.com/product"
     );
-
     promise.then((response) => {
       setDataGame(response.data.reverse());
+      setLoading(false);
     });
 
     promise.catch((response) => {
       console.log(response.data);
     });
-  }, []);
+  }, [setLoading]);
 
   return (
     <ContainerCarrossel>
       <GamesPromotion>
         {dataGame.map((image, index) => (
-          <Link to={`/product/${image._id}`} key={index}> 
+          <Link to={`/product/${image._id}`} key={index}>
             <img key={index} src={image.images[0]} alt="Jogo em promoção" />
           </Link>
         ))}
@@ -39,11 +39,11 @@ const ContainerCarrossel = styled.div`
 `;
 
 const GamesPromotion = styled.div`
-@media ( max-width: 760px){
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-}
+  @media (max-width: 760px) {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
   width: 100%;
   display: flex;
   justify-content: center;
