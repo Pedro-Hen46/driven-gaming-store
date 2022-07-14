@@ -42,7 +42,7 @@ const ContainerAccount = styled.div`
   justify-content: center;
   align-items: center;
   padding: 40px;
-  margin-top: -100px;
+  margin-top: -150px;
 
   width: 100%;
   height: 100vh;
@@ -59,6 +59,7 @@ const ContainerAccount = styled.div`
     bottom: 70px;
   }
   h1 {
+    z-index: 1;
     color: #ffffff;
     font-family: "Montserrat";
     font-style: italic;
@@ -76,6 +77,7 @@ const ContainerAccount = styled.div`
     bottom: -120px;
   }
   button {
+    z-index: 1;
     width: 100%;
     height: 60px;
     background-color: black;

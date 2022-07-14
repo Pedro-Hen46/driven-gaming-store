@@ -29,6 +29,10 @@ export default function CheckoutPage() {
   
   useEffect(() => {
 
+    if(myOrders.length === 0){
+      setLoading(false);
+    }
+
     if (userData !== null) {
     const promise = axios.get(
       "https://driven-gaming-store-fullstack.herokuapp.com/myorders",
@@ -51,9 +55,10 @@ export default function CheckoutPage() {
   return (
     <>
       <Header />
+      {myOrders.length === 0 ? <EmptyOrders /> : ""}
       {!loading ? (
         <>
-          {myOrders.length === 0 ? <EmptyOrders /> : <OrdersResume data={myOrders}/>}
+          {myOrders.length === 0 ? <></> : <OrdersResume data={myOrders}/>}
         </>
       ) : (
         <>
