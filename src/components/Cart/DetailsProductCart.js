@@ -1,14 +1,16 @@
 import styled from "styled-components";
 
 export default function DetailsProductCart({ data }) {
-  
+  console.log(data)
   return (
     <ContainerDetailsProduct>
       <img src={data.images[0]} alt={data.titulo} />
       <DetailsProduct>
         <h4>{data.titulo}</h4>
-        <h5>Quantidade: ...desenvolvendo{data.qtd}</h5>
-        <h4>R$ {data.desconto.replace(".", ",")}</h4>
+        <h5>{data.categoria}</h5>
+        <h5>Quantidade: 1{data.qtd}</h5>
+        <h5>Valor unitário: R${data.desconto.replace(".", ",")}</h5>
+        <h4>TOTAL: R$ {data.desconto.replace(".", ",")}</h4>
       </DetailsProduct>
     </ContainerDetailsProduct>
   );
@@ -56,5 +58,9 @@ const ContainerDetailsProduct = styled.div`
     width: 130px;
     height: 175px;
     border-radius: 10px;
+
+    :hover{
+      cursor: pointer;
+    }
   }
 `;

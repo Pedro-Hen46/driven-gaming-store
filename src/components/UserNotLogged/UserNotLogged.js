@@ -30,8 +30,8 @@ export default function UserNotLogged() {
         />
         <tt>“Raiva, medo, agressão. Ao lado sombrio elas pertencem”</tt>
 
-        <Footer />
       </ContainerAccount>
+        <Footer />
     </>
   );
 }

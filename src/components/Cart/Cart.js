@@ -2,9 +2,10 @@ import styled from "styled-components";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+import Header from "../../components/Header/Header";
 import DetailsProduct from "./DetailsProductCart";
 
-export default function CartPage({ dataCart }) {
+export default function CartPage({ dataCart, setDataCart }) {
   const navigate = useNavigate();
   const [infoProduct, setInfoProduct] = useState([]);
   const [prices, setPrices] = useState([]);
@@ -36,13 +37,14 @@ export default function CartPage({ dataCart }) {
 
 
   prices.map((prices) => {
-    totalValue += Number(prices);
+    return totalValue += Number(prices);
   });
 
   function ClearCart() {
     if (window.confirm("Você tem certeza que deseja limpar o carrinho?")) {
-      localStorage.setItem("@cart", []);
+      localStorage.setItem("@cart", `[]`);
       navigate("/");
+      
     }
   }
 
@@ -50,6 +52,7 @@ export default function CartPage({ dataCart }) {
     ""
   ) : (
     <>
+    <Header />
       <ContainerCart>
         <Legend
           onClick={() => {

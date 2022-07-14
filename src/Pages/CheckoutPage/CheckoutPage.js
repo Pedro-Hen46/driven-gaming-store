@@ -85,6 +85,7 @@ export default function CheckoutPage() {
 
         promise.then((response) => {
           console.log(response.data);
+          localStorage.setItem("@cart", `[]`);
           navigate("/myorders");
         });
 

@@ -27,12 +27,9 @@ export default function CheckoutPage() {
     return JSON.parse(localStorage.getItem("user"));
   });
   
+ 
   useEffect(() => {
-
-    if(myOrders.length === 0){
-      setLoading(false);
-    }
-
+    
     if (userData !== null) {
     const promise = axios.get(
       "https://driven-gaming-store-fullstack.herokuapp.com/myorders",
@@ -49,16 +46,19 @@ export default function CheckoutPage() {
       setLoading(false);
 
     });
+  } else {
+    setLoading(false);
   }
-  }, [userData]);
+  }, [userData, myOrders.length]);
+
 
   return (
     <>
       <Header />
-      {myOrders.length === 0 ? <EmptyOrders /> : ""}
+           
       {!loading ? (
         <>
-          {myOrders.length === 0 ? <></> : <OrdersResume data={myOrders}/>}
+          {myOrders.length === 0 ?  <EmptyOrders /> : <OrdersResume data={myOrders}/> }
         </>
       ) : (
         <>
