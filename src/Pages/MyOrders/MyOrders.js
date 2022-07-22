@@ -54,7 +54,6 @@ export default function CheckoutPage() {
 
   return (
     <>
-      <Header />
            
       {!loading ? (
         <>

@@ -4,7 +4,7 @@ import styled from "styled-components";
 export default function GameList({ data, setCartItens, cartItens }) {
 
   function addItemOnCart() {
-    console.log(data._id);
+
     const newItem = {
       id: data._id,
       qtd: 1,
@@ -133,7 +133,7 @@ const ContentDetails = styled.div`
   display: flex;
   position: relative;
 
-  width: 93%;
+  width: 94%;
   border-radius: 10px;
   min-height: 195px;
   height: auto;

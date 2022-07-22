@@ -8,8 +8,8 @@ export default function OrdersResume({ data }) {
       <h1>RESUMO DOS SEUS PEDIDOS</h1>
       {data.map((item, index) => (
         <ResumeOrder key={index}>
-          <h3>STATUS DO PEDIDO: AGUARDANDO ENVIO</h3>
-          <h2>DADOS PARA ENTREGA</h2>
+          <h3>STATUS DO PEDIDO: AGUARDANDO ENVIO ✈️</h3>
+          <h2>  DADOS PARA ENTREGA ❤️</h2>
           <br />
           <h2>
             data de compra: <strong>{item.date}H</strong>
@@ -29,12 +29,12 @@ export default function OrdersResume({ data }) {
 
           <br />
           <h2>
-            telefone para contato: <strong>{item.phoneContact}</strong>
+            telefone para contato: <strong>{item.phoneContact}</strong> 📱
           </h2>
           <br />
           <h2>
             valor do pedido: R${" "}
-            <strong>{item.valueOrder.replace(".", ",")}</strong>
+            <strong>{item.valueOrder.replace(".", ",")}</strong> 💰
           </h2>
           <br />
           <h2>
@@ -78,7 +78,6 @@ const Products = styled.div`
     margin-right: 20px;
     h3 {
       color: #30deff;
-
       font-size: 16px;
       font-weight: 600;
       text-transform: uppercase;
@@ -105,15 +104,16 @@ const Products = styled.div`
 const ResumeOrder = styled.div`
   width: 95%;
   height: auto;
-  border-radius: 5px;
+  border-radius: 15px;
   padding: 10px;
   background-color: white;
   margin-bottom: 25px;
-  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
 
   strong {
     color: darkgrey;
-    font-weight: 600;
+    font-weight: 700;
+    font-size: 16px;
   }
 
   h5 {
@@ -144,6 +144,7 @@ const ResumeOrder = styled.div`
   h2 {
     color: darkgray;
     font-size: 16px;
+    text-align: center;
     font-weight: 400;
     text-transform: uppercase;
     font-family: "Montserrat";
@@ -160,7 +161,7 @@ const ContainerResume = styled.div`
   align-items: center;
 
   h1 {
-    margin-top: 20%;
+    margin-top: 20px;
     z-index: 1;
     margin-bottom: 20px;
     color: #30deff;

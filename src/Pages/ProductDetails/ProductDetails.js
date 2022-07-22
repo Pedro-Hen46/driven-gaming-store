@@ -1,27 +1,26 @@
-import Footer from "../../components/Footer/Footer";
 import styled from "styled-components";
 import ReactPlayer from "react-player";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
 export default function ProductDetails() {
   const { idProductSelected } = useParams();
+  const navigate = useNavigate();
 
   const [gameDetails, setGameDetails] = useState([]);
-  
-  const [cartItens, setCartItens] = useState( () => {
-    const cartCache = localStorage.getItem('@cart');
-    
-    if(cartCache){
+
+  const [cartItens, setCartItens] = useState(() => {
+    const cartCache = localStorage.getItem("@cart");
+
+    if (cartCache) {
       return JSON.parse(cartCache);
     }
     return [];
-
   });
 
   useEffect(() => {
-    localStorage.setItem('@cart', JSON.stringify(cartItens));
+    localStorage.setItem("@cart", JSON.stringify(cartItens));
   }, [cartItens]);
 
   useEffect(() => {
@@ -46,9 +45,10 @@ export default function ProductDetails() {
       id: idProductSelected,
       qtd: 1,
     };
-    const itemExists = cartItens.find((item) => String(item.id) === idProductSelected);
-    // console.log(cartItens)
-    
+    const itemExists = cartItens.find(
+      (item) => String(item.id) === idProductSelected
+    );
+
     if (itemExists) {
       const cartUpdated = cartItens.map((item) => {
         if (item.id === idProductSelected) {
@@ -62,7 +62,7 @@ export default function ProductDetails() {
       setCartItens(cartUpdated);
     } else {
       setCartItens((state) => [...state, newItem]);
-      console.log(cartItens)
+      console.log(cartItens);
     }
     window.alert("Item adicionado no carrinho");
   }
@@ -88,7 +88,7 @@ export default function ProductDetails() {
           </DemonstrationImages>
 
           <ProductInfo>
-            <h1>{gameDetails.titulo}</h1>
+            <h1>🎮 {gameDetails.titulo}</h1>
             <tt>{gameDetails.categoria}</tt>
             <div className="player-wrapper">
               <ReactPlayer
@@ -106,6 +106,12 @@ export default function ProductDetails() {
               ))}
             </GameCompatibility>
 
+            <GameNormalPrice>
+              <h3>DE R$ {gameDetails.preco.replace(".", ",")}</h3>
+            </GameNormalPrice>
+
+            <span>POR APENAS:</span>
+
             <GamePrice>
               <ion-icon name="cart"></ion-icon>
               <h2>R$ {gameDetails.desconto.replace(".", ",")}</h2>
@@ -115,10 +121,54 @@ export default function ProductDetails() {
           </ProductInfo>
         </>
       )}
-      <Footer />
+
+      <BackArrow onClick={() => navigate("/")}>
+        <ion-icon name="arrow-back"></ion-icon>
+      </BackArrow>
     </ContainerProduct>
   );
 }
+const BackArrow = styled.div`
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60px;
+  height: 60px;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  left: 15px;
+  top: 15px;
+  z-index: 1;
+
+  ion-icon {
+    font-size: 38px;
+    color: #ffffff;
+  }
+
+  transition: all 0.4s;
+  :hover {
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.9);
+    box-shadow: 0px 0px 20px rgba(48, 222, 255, 0.5);
+  }
+`;
+
+const GameNormalPrice = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 40px;
+
+  h3 {
+    font-family: "Montserrat";
+    font-size: 18px;
+    font-weight: 300;
+    text-decoration: line-through;
+  }
+`;
+
 const GamePrice = styled.div`
   display: flex;
   width: 100%;
@@ -145,11 +195,10 @@ const GameCompatibility = styled.div`
   height: 50px;
   justify-content: space-evenly;
   align-items: center;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin-top: 10px;
 
   ion-icon {
-    font-size: 32px;
+    font-size: 36px;
   }
 `;
 
@@ -174,9 +223,7 @@ const DemonstrationImages = styled.div`
     border-radius: 5%;
     z-index: 1;
 
-    :first-child {
-      margin-right: 5%;
-    }
+    box-shadow: 0px 0px 35px rgba(48, 222, 255, 0.5);
   }
 `;
 
@@ -187,9 +234,9 @@ const ProductInfo = styled.div`
   background-color: #ffffff;
   border-radius: 10px;
   padding: 20px;
-  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.4);
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
   margin-top: 10px;
-  margin-bottom: 45px;
+  margin-bottom: 20px;
 
   display: flex;
   flex-direction: column;
@@ -223,6 +270,7 @@ const ProductInfo = styled.div`
     animation: animate 2s linear infinite;
     :hover {
       cursor: pointer;
+      box-shadow: 0px 0px 30px rgba(48, 222, 255, 0.4);
     }
   }
   @keyframes animate {
@@ -231,7 +279,7 @@ const ProductInfo = styled.div`
       font-size: 26px;
     }
     50% {
-      box-shadow: 0px 0px 30px rgba(48, 222, 255, 0.99);
+      box-shadow: 0px 0px 30px rgba(48, 222, 255, 0.7);
       font-size: 30px;
     }
     100% {
@@ -245,7 +293,13 @@ const ProductInfo = styled.div`
     background-color: rgba(0, 0, 0, 0.9);
     border-radius: 10px;
     width: 100%;
-    height: 200px;
+    max-width: 38rem;
+    min-width: 24.9rem;
+
+    height: 40%;
+    max-height: 26rem;
+    min-height: 16rem;
+
     position: relative;
 
     display: flex;
@@ -255,7 +309,7 @@ const ProductInfo = styled.div`
 
     :hover {
       cursor: pointer;
-      box-shadow: 0px 0px 20px rgba(48, 222, 255, 0.8);
+      box-shadow: 0px 0px 20px rgba(48, 222, 255, 0.5);
     }
 
     /* padding-top: 56.25%; //Player ratio: 100 / (1280 / 720) */
@@ -275,4 +329,12 @@ const ContainerProduct = styled.div`
   flex-wrap: wrap;
   flex-direction: column;
   align-items: center;
+
+  span {
+    font-family: "Montserrat";
+    font-weight: 400;
+    font-size: 18px;
+    letter-spacing: 3px;
+    margin-bottom: 10px;
+  }
 `;

@@ -2,7 +2,6 @@ import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import yoda from "../../lib/images/yodaJedi.png";
 import Footer from "../Footer/Footer";
-import Header from "../Header/Header";
 
 export default function UserNotLogged() {
   const navigate = useNavigate();
@@ -13,12 +12,7 @@ export default function UserNotLogged() {
 
   return (
     <>
-      <Header />
       <ContainerAccount>
-        <h1>
-          Ops, parece que você não está logado, para prosseguir clique abaixo...
-        </h1>
-        <button onClick={() => goToLogin()}>LOGAR AGORA</button>
         <img
           onClick={() =>
             window.alert(
@@ -27,11 +21,14 @@ export default function UserNotLogged() {
           }
           src={yoda}
           alt="Yoda dando o bizu"
-        />
+          />
         <tt>“Raiva, medo, agressão. Ao lado sombrio elas pertencem”</tt>
-
+        <button onClick={() => goToLogin()}>LOGAR AGORA</button>
+          <h1>
+            "Ops, parece que você não está logado, para prosseguir clique para logar..."
+          </h1>
       </ContainerAccount>
-        <Footer />
+      <Footer />
     </>
   );
 }
@@ -41,28 +38,27 @@ const ContainerAccount = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 40px;
-  margin-top: -150px;
+  padding: 30px;
 
   width: 100%;
   height: 100vh;
   background-image: linear-gradient(#30deff, black, black);
+
   tt {
+    padding: 15px;
     color: #ffffff;
     text-transform: uppercase;
     font-family: "Montserrat";
-    font-weight: 400;
+    font-weight: 600;
     text-shadow: 0px 0px 10px rgba(48, 222, 255, 99);
     font-size: 20px;
     position: fixed;
     text-align: center;
-    bottom: 70px;
   }
   h1 {
     z-index: 1;
     color: #ffffff;
     font-family: "Montserrat";
-    font-style: italic;
     font-weight: 300;
     text-align: center;
     font-size: 18px;
@@ -73,8 +69,6 @@ const ContainerAccount = styled.div`
     width: 100%;
     height: 45%;
     min-height: 400px;
-    position: fixed;
-    bottom: -120px;
   }
   button {
     z-index: 1;

@@ -1,5 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import yoda from "../../lib/images/yodaJedi.png";
+
 
 export default function EmptyCart() {
   const navigate = useNavigate();
@@ -10,10 +12,14 @@ export default function EmptyCart() {
 
   return (
     <ContainerCart>
-      <h1>"Ops, parece que você não tem nenhum item no carrinho."</h1>
+      <img
+          src={yoda}
+          alt="Yoda dando o bizu"
+          />
       <button onClick={() => goToCompras()}>
         <ion-icon name="cash"></ion-icon>COMPRAR AGORA!
       </button>
+      <h1>“Um Jedi usa pagamento à vista, nunca empréstimo...”</h1>
     </ContainerCart>
   );
 }
@@ -27,17 +33,29 @@ const ContainerCart = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 20px;
+  padding: 30px;
 
   h1 {
-    font-size: 22px;
+    position: fixed;
+    text-transform: uppercase;
+    padding: 10px;
+    top: 55%;
+    font-size: 18px;
+    letter-spacing: 0.19rem;
     text-align: center;
-    font-weight: 700;
+    font-weight: 600;
+    text-shadow: 0px 0px 10px rgba(0,0,0,100);
     color: #fff;
     font-family: "Montserrat";
-    margin-bottom: 25px;
-    font-style: italic;
   }
+  
+  img {
+    object-fit: contain;
+    width: 100%;
+    height: 45%;
+    min-height: 400px;
+  }
+
   button {
     width: 100%;
     height: 70px;
