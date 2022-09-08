@@ -2,6 +2,7 @@
   "name": "projeto14-driven-gaming-store-front",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "dependencies": {
     "@babel/runtime": "^7.18.6",
     "axios": "^0.27.2",

@@ -1,1 +1,0 @@
-E-commerce Games (Driven Gamming Store) - using React.JS - NodeJS - MongoDB.
