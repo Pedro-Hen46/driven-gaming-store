@@ -1,4 +1,4 @@
-<img src="./public/images/Apresentation.gif" style="height: 400px; border-radius: 20px; object-fit:contain;">
+<img src="https://github.com/Pedro-Hen46/driven-gaming-store/blob/main/public/images/Apresentation.gif" style="height: 400px; border-radius: 20px; object-fit:contain;">
 
 E-commerce Games (Driven Gamming Store) - usando ReactJS - NodeJS - MongoDB.
 
@@ -18,18 +18,22 @@ Algumas tecnologias usadas:
   
 ## Como usar?
 ### 1 - Quando você acessa, essa é a Tela Inicial.
-<img src="./public/images/HomePage.gif" style="height: 450px; border-radius: 5px;">
+<img src="https://github.com/Pedro-Hen46/driven-gaming-store/blob/main/public/images/HomePage.gif" width="300px" height="auto">
 
 ### 2 - Escolha o seu jogo favorito e adicione ao carrinho.
-<img src="./public/images/GameDetail.gif" style="height: 450px; border-radius: 5px;">
-<img src="./public/images/CarrinhoCompra.png" style="height: 450px; border-radius: 5px;">
+<div>
+<img src="https://github.com/Pedro-Hen46/driven-gaming-store/blob/main/public/images/GameDetail.gif"  width="300px" height="auto">
+<img src="https://github.com/Pedro-Hen46/driven-gaming-store/blob/main/public/images/CarrinhoCompra.png"  width="300px" height="auto">
+</div>
 
 ### 3 - Finalize seu pedido.
-<img src="./public/images/FinalizandoPedido.gif" style="height: 450px; border-radius: 5px;">
-<img src="./public/images/DadosComprador.png" style="height: 450px; border-radius: 5px;">
+<div>
+<img src="./public/images/FinalizandoPedido.gif" width="300px" height="auto">
+<img src="./public/images/DadosComprador.png" width="300px" height="auto">
+</div>
 
 ### 4 - Aguarde a Entrega chegar até o seu endereço. ❤
-<img src="./public/images/ResumeOrder.png" style="height: 450px; border-radius: 5px;">
+<img src="./public/images/ResumeOrder.png" width="300px" height="auto">
 
 ## Recursos
   - Layout Responsivo (Desktop, Tablet, Mobile) 🖥️
