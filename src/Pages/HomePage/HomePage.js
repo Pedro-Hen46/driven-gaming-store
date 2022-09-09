@@ -1,11 +1,10 @@
-import styled from "styled-components";
-import axios from "axios";
+import { ContainerHome, AnimationLoading, ContainerGameList } from "./HomePageStyles";
 import { useEffect, useState } from "react";
+import axios from "axios";
 import React from "react";
 import Lottie from "react-lottie";
 import animationData from "../../lib/PacMan.json";
 
-//============= Imporatando Components ======================//
 import Footer from "../../components/Footer/Footer.js";
 import Carrossel from "../../components/Carrossel/Carrossel.js";
 import GameList from "../../components/GameList/GameList.js";
@@ -21,7 +20,6 @@ export default function HomePage() {
     },
   };
 
-  //====================== VARIAVEIS DE ESTADO =================//
   const [dataGame, setDataGame] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -34,7 +32,6 @@ export default function HomePage() {
     return [];
   });
 
-  //====================== CONEXÃO BACK =================//
   useEffect(() => {
     localStorage.setItem("@cart", JSON.stringify(cartItens));
   }, [cartItens]);
@@ -85,48 +82,3 @@ export default function HomePage() {
     </ContainerHome>
   );
 }
-const AnimationLoading = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: fixed;
-  left: 0;
-  top: 35%;
-  z-index: 1;
-`;
-
-const ContainerGameList = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-`;
-const ContainerHome = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  width: 100%;
-  height: auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: #fff;
-
-  :last-child {
-    margin-bottom: 50px;
-  }
-  button {
-    width: 80%;
-    height: 50px;
-    background-color: black;
-    border: thin solid red;
-    border-radius: 10px;
-    color: white;
-    font-weight: bold;
-    font-size: 22px;
-  }
-`;
